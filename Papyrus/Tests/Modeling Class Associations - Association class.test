@@ -1,0 +1,83 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _G3lhoHT3EeKCqKlV8_wmTg,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Modeling Class Associations - Association class
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _w8p2MHUIEeKCqKlV8_wmTg
+Save-Time: 2/12/13 6:41 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Within the palette, use the tool “ClassAssociation”;
+2. Drag from Class1 to Class2;
+3. Verify that Class Association is created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 285 614 -height 618 -width 603
+    get-tab-folder | get-tab-item ClassDiagram2 | click
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 583 435 -height 617 -width 584
+    with [get-palette] {
+        with [get-palette-entry AssociationClass] {
+            mouse-move 10 0 -height 23 -width 125
+            mouse-move 62 21 -height 23 -width 125
+        }
+        get-palette-entry ContainmentLink | mouse-move 26 21 -height 23 -width 125
+        get-palette-entry AssociationBranch | mouse-move 47 0 -height 23 -width 125
+        with [get-palette-entry AssociationClass] {
+            mouse-move 68 9 button1 -height 23 -width 125
+            mouse-press 68 9 button1 -height 23 -width 125
+            mouse-release 68 9 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model] {
+            mouse-move 103 347 -height 617 -width 584
+            with [get-edit-part -name Class2 | get-edit-part -className ClassOperationCompartmentEditPart] {
+                mouse-move 48 21 button1 -height 28 -width 100
+                mouse-press 48 21 button1 -height 28 -width 100
+                mouse-move 47 21 -mask 524288 -height 28 -width 100
+                mouse-drag 47 21 -mask 524288 -height 28 -width 100
+            }
+        }
+        mouse-drag 89 147 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model | get-edit-part -name Class3 | get-edit-part 
+            -className ClassAttributeCompartmentEditPart] {
+            mouse-drag 36 9 button1 524288 -height 28 -width 100
+            mouse-release 36 9 button1 524288 -height 28 -width 100
+            mouse-press 36 9 button1 -height 28 -width 100
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        with [get-edit-part -name Class3 | get-edit-part -className ClassAttributeCompartmentEditPart] {
+            mouse-release 36 9 button1 524288 -height 28 -width 100
+            mouse-move 50 1 -height 28 -width 100
+        }
+        mouse-move 582 294 -height 645 -width 584
+        mouse-move 137 115 -height 645 -width 584
+        get-edit-part -name Class2 | mouse-move 85 10 -height 100 -width 100
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    get-property childrenCount | equals 3 | verify-true
+    with [get-edit-part -name AssociationClass1] {
+        get-figure 0 | get-property text | equals AssociationClass1 | verify-true
+        with [get-target-connection 0] {
+            get-property "source.element.name" | equals AssociationClass1 | verify-true
+            get-property "source.target.element.name" | equals Class3 | verify-true
+        }
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

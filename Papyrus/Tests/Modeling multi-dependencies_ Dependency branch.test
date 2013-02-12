@@ -1,0 +1,112 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _G3lhoHT3EeKCqKlV8_wmTg,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Modeling multi-dependencies: Dependency branch
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _VWb9kHUHEeKCqKlV8_wmTg
+Save-Time: 2/12/13 6:34 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Create a dependency from SRS_CoreDesign to SRS_Interfaces;
+2. Add a branch using the tool "DependencyBranch" in the palette.
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 180 616 -height 618 -width 603
+    get-tab-folder | get-tab-item ClassDiagram | click
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 583 439 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry AssociationClass | mouse-move 19 22 -height 23 -width 125
+        get-palette-entry ContainmentLink | mouse-move 29 22 -height 23 -width 125
+        with [get-palette-entry Dependency] {
+            mouse-move 39 22 -height 23 -width 125
+            mouse-move 58 13 button1 -height 23 -width 125
+            mouse-press 58 13 button1 -height 23 -width 125
+            mouse-release 58 13 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model] {
+            mouse-move 406 412 -height 617 -width 584
+            with [get-edit-part -name "SRS_CoreDesign" | get-edit-part 
+                -className ModelPackageableElementCompartmentEditPartTN] {
+                mouse-move 39 24 button1 -height 79 -width 200
+                mouse-press 39 24 button1 -height 79 -width 200
+                mouse-move 40 24 -mask 524288 -height 79 -width 200
+                mouse-drag 40 24 -mask 524288 -height 79 -width 200
+            }
+        }
+        mouse-drag 250 411 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model | get-edit-part -name "SRS_Interfaces" | get-edit-part 
+            -className ModelPackageableElementCompartmentEditPartTN] {
+            mouse-drag 131 48 button1 524288 -height 79 -width 200
+            mouse-release 131 48 button1 524288 -height 79 -width 200
+            mouse-press 131 48 button1 -height 79 -width 200
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        with [get-edit-part -name "SRS_Interfaces"] {
+            get-edit-part -className ModelPackageableElementCompartmentEditPartTN | mouse-release 131 48 button1 524288 
+                -height 79 -width 200
+            get-target-connection 0 | get-edit-part -text Dependency1 | activate-direct-edit
+        }
+        mouse-move 209 292 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry AssociationBranch | mouse-move 55 21 -height 23 -width 125
+        get-palette-entry AssociationClass | mouse-move 60 21 -height 23 -width 125
+        get-palette-entry ContainmentLink | mouse-move 58 22 -height 23 -width 125
+        get-palette-entry Dependency | mouse-move 55 22 -height 23 -width 125
+        get-palette-entry DependencyBranch | mouse-move 51 13 -height 23 -width 125
+    }
+    get-diagram -index 1 | commit-direct-edit
+    with [get-palette | get-palette-entry DependencyBranch] {
+        mouse-move 51 13 button1 -height 23 -width 125
+        mouse-press 51 13 button1 -height 23 -width 125
+        mouse-release 51 13 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 404 400 -height 617 -width 584
+        with [get-edit-part -name "SRS_Interfaces" | get-target-connection 0] {
+            mouse-move 43 54 button1 -height 88 -width 116
+            mouse-press 43 54 button1 -height 88 -width 116
+            mouse-release 43 54 button1 524288 -height 88 -width 116
+        }
+        mouse-move 311 136 -height 617 -width 584
+        with [get-edit-part -name "SRS_Signals" | get-edit-part 
+            -className ModelPackageableElementCompartmentEditPartTN] {
+            mouse-move 156 43 button1 -height 79 -width 200
+            mouse-press 156 43 button1 -height 79 -width 200
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model] {
+            get-edit-part -name "SRS_Signals" | get-edit-part -className ModelPackageableElementCompartmentEditPartTN 
+                | mouse-release 156 43 button1 524288 -height 79 -width 200
+            get-edit-part -name Dependency1 | get-edit-part -name Dependency1 | activate-direct-edit
+            mouse-move 1 95 -height 617 -width 584
+        }
+        commit-direct-edit
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name "SRS_Signals" 
+    | get-target-connection 0] {
+    get-property "element.source.Model[0].name" | equals "SRS_CoreDesign" | verify-true
+    get-property "element.target.Model[0].name" | equals "SRS_Interfaces" | verify-true
+    get-property "element.target.Model[1].name" | equals "SRS_Signals" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
