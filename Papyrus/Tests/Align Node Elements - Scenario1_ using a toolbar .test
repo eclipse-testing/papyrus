@@ -1,0 +1,71 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_G3lhoHT3EeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Align Node Elements - Scenario1: using a toolbar 
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _UhooEHT9EeKCqKlV8_wmTg
+Save-Time: 2/12/13 5:27 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select both SRS_Interfaces and SRS_Signals (first select SRS_Interfaces);
+2. In the tool bar, select the button Alignment Actions, and then select "Align Right";
+3. Verify that both elements are aligned (SRS_Signals was used as reference position). 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 121 616 -height 618 -width 603
+    get-tab-folder | get-tab-item ClassDiagram | click
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 0 472 -height 617 -width 584
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    with [get-edit-part -name "SRS_Signals" | get-figure "0/0"] {
+        get-property x | equals 168 | verify-true
+        get-property y | equals 36 | verify-true
+    }
+    with [get-edit-part -name "SRS_Interfaces" | get-figure "0/0"] {
+        get-property x | equals 0 | verify-true
+        get-property y | equals 216 | verify-true
+    }
+}
+
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    with [get-edit-part -name "SRS_Interfaces" | get-edit-part 
+        -className ModelPackageableElementCompartmentEditPartTN] {
+        mouse-move 91 37 button1 -height 79 -width 200
+        mouse-press 91 37 button1 -height 79 -width 200
+        mouse-release 91 37 button1 524288 -height 79 -width 200
+    }
+    mouse-move 256 136 -height 617 -width 588
+    with [get-edit-part -name "SRS_Signals" | get-edit-part -className ModelPackageableElementCompartmentEditPartTN] {
+        mouse-move 125 41 button1 CTRL -height 79 -width 200
+        mouse-press 125 41 button1 CTRL -height 79 -width 200
+        mouse-release 125 41 button1 786432 -height 79 -width 200
+    }
+    mouse-move 0 2 -height 617 -width 588
+}
+get-button "Alignment Actions" | click -arrow
+get-menu "Align Right" | click
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    with [get-edit-part -name "SRS_Signals" | get-figure "0/0"] {
+        get-property x | equals 168 | verify-true
+        get-property y | equals 36 | verify-true
+    }
+    with [get-edit-part -name "SRS_Interfaces" | get-figure "0/0"] {
+        get-property x | equals 168 | verify-true
+        get-property y | equals 216 | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

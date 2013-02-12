@@ -1,0 +1,33 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_cuRmQHTlEeKCqKlV8_wmTg
+Element-Name: Close Diagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _oq46gHTrEeKCqKlV8_wmTg
+Save-Time: 2/12/13 3:13 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Click on the cross located on leftside of the tab of a diagram to close it;
+2. Verify that the diagram is closed. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+get-editor "model.di" | get-tab-folder | get-property activePage | equals NewDiagram | verify-true
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name SysMLmodel | mouse-move 128 616 -height 617 -width 584
+    get-tab-folder | get-tab-item NewDiagram | close
+}
+get-editor "model.di" | get-tab-folder | get-property tabCount | equals 0 | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
