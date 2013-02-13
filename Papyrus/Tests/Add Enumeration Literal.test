@@ -1,0 +1,68 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_L6jtMHWwEeK2XrLEzOSSCQ,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Add Enumeration Literal
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _TcE84HW7EeK2XrLEzOSSCQ
+Save-Time: 2/13/13 4:03 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use "Enumeration Literal" tool on a palette and click inside Enumeration;
+2. Set literal name and press Return;
+3. Verify that the literal has been added. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model.profile" | double-click
+with [get-editor "model.profile.di"] {
+    get-diagram -index 1 | get-edit-part -name profile | mouse-move 441 614 -height 617 -width 584
+    get-tab-folder | get-tab-item "Profile diagram of the SimplifiedReqML" | click
+    get-diagram -index 1 | get-edit-part -name profile | mouse-move 582 479 -height 617 -width 584
+   
+    with [get-palette] {
+        get-palette-entry Operation | mouse-move 102 21 -height 23 -width 125
+        with [get-palette-entry EnumerationLiteral] {
+            mouse-move 95 12 button1 -height 23 -width 125
+            mouse-press 95 12 button1 -height 23 -width 125
+            mouse-release 95 12 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name profile | get-edit-part -name SimplifiedReqML | get-edit-part 
+        -className ProfilePackageableElementCompartmentEditPartTN] {
+        mouse-move 408 241 -height 300 -width 493
+        with [get-edit-part -name ImportanceLevel | get-edit-part -text HighMediumLow] {
+            mouse-move 23 48 button1 -height 70 -width 100
+            mouse-press 23 48 button1 -height 70 -width 100
+            mouse-release 23 48 button1 524288 -height 70 -width 100
+        }
+    }
+    get-diagram -index 1 | get-edit-part -name profile | get-edit-part -name SimplifiedReqML | get-edit-part 
+        -className ProfilePackageableElementCompartmentEditPartTN | get-edit-part -name ImportanceLevel | get-edit-part 
+        -text HighMediumLowEnumerationLiteral1 | get-edit-part -name EnumerationLiteral1 | activate-direct-edit
+    with [get-editbox] {
+        set-text Literal1
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name profile | mouse-move 7 269 -height 617 -width 584
+    }
+}
+with [get-editor "model.profile.di" | get-diagram -index 1 | get-edit-part -name profile | get-edit-part 
+    -name SimplifiedReqML | get-edit-part -className ProfilePackageableElementCompartmentEditPartTN | get-edit-part 
+    -name ImportanceLevel | get-edit-part -text HighMediumLowLiteral1] {
+    get-property childrenCount | equals 4 | verify-true
+    get-edit-part -name Literal1 | get-property text | equals Literal1 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
