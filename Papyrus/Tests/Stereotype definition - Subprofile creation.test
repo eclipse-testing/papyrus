@@ -1,0 +1,71 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_L6jtMHWwEeK2XrLEzOSSCQ
+Element-Name: Stereotype definition - Subprofile creation
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _4kU0IHW2EeK2XrLEzOSSCQ
+Save-Time: 2/13/13 3:42 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. To create a sub profile, select the profile tool in the profile diagram palette ( ) and then 
+click on the profile diagram inside SimplifiedReqML profile;
+2. Name it and press Return;
+3. Verify that new profile was created as a subprofile of SimplifiedReqML.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model.profile" | double-click
+with [get-editor "model.profile.di"] {
+    get-diagram -index 1 | get-edit-part -name profile | mouse-move 390 616 -height 617 -width 584
+    get-tab-folder | get-tab-item "Profile diagram of the SimplifiedReqML" | click
+    with [get-diagram -index 1 | get-edit-part -name profile] {
+        mouse-move 457 470 -height 617 -width 584
+        mouse-move 582 140 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry Package | mouse-move 11 13 -height 23 -width 125
+        get-palette-entry "Zoom In" | mouse-move 17 18 -height 19 -width 19
+        get-palette-entry Package | mouse-move 71 22 -height 23 -width 125
+        with [get-palette-entry Profile] {
+            mouse-move 55 13 button1 -height 23 -width 125
+            mouse-press 55 13 button1 -height 23 -width 125
+            mouse-release 55 13 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name profile | get-edit-part -name SimplifiedReqML | get-edit-part 
+        -className ProfilePackageableElementCompartmentEditPartTN] {
+        mouse-move 438 32 button1 -height 300 -width 493
+        mouse-press 438 32 button1 -height 300 -width 493
+        mouse-release 438 32 button1 524288 -height 300 -width 493
+    }
+    with [get-diagram -index 1 | get-edit-part -name profile | get-edit-part -name SimplifiedReqML | get-edit-part 
+        -className ProfilePackageableElementCompartmentEditPartTN | get-edit-part -name Profile1] {
+        get-edit-part -text Profile1 | activate-direct-edit
+        get-handle MoveHandle | mouse-hover 151 1 -height 102 -width 202
+    }
+    get-editbox | set-text SubProfile
+    get-diagram -index 1 | get-edit-part -name profile | get-edit-part -name SimplifiedReqML | get-edit-part 
+        -className ProfilePackageableElementCompartmentEditPartTN | get-edit-part -name Profile1 
+        | get-handle MoveHandle | mouse-hover 146 1 -height 102 -width 202
+    get-editbox | key-type Enter
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name profile | mouse-move 52 2 -height 617 -width 619
+    }
+}
+get-editor "model.profile.di" | get-diagram -index 1 | get-edit-part -name profile | mouse-move 35 586 -height 617 
+    -width 619
+get-view "Model Explorer" | get-tree | get-item " profile/ SimplifiedReqML/ SubProfile" | get-property caption 
+    | equals SubProfile | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

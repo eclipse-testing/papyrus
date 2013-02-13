@@ -1,0 +1,87 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_LHDVAHWiEeKzYsT5EMG8Hw,_0ZVCIHTsEeKCqKlV8_wmTg
+Element-Name: UML Sequence diagrams : basics  - Message creation
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _vUgwQHWjEeKzYsT5EMG8Hw
+Save-Time: 2/13/13 1:14 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select Message Creation tool  from palette;
+2. Place the message on the diagram click to set source, maintain mouse 
+button down an drag towards target then release;
+3. Name message;
+4. Verify that message has been created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | mouse-move 352 756 
+        -height 757 -width 857
+    get-tab-folder | get-tab-item "2 LifeLines" | click
+    get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart | mouse-move 573 417 -height 722 -width 843
+    with [get-palette] {
+        get-palette-entry "Message Reply" | mouse-move 110 0 -height 23 -width 125
+        with [get-palette-entry "Message Async"] {
+            mouse-move 100 16 button1 -height 23 -width 125
+            mouse-press 100 16 button1 -height 23 -width 125
+            mouse-release 100 16 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+            -className InteractionInteractionCompartmentEditPart] {
+            mouse-move 213 420 -height 722 -width 843
+            with [get-edit-part -name Lifeline] {
+                mouse-move 27 403 button1 -height 475 -width 53
+                mouse-press 27 403 button1 -height 475 -width 53
+                mouse-move 28 402 -mask 524288 -height 475 -width 53
+                mouse-drag 28 402 -mask 524288 -height 475 -width 53
+            }
+        }
+        mouse-drag 199 450 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+            -className InteractionInteractionCompartmentEditPart | get-edit-part -name Lifeline2] {
+            mouse-drag 19 403 button1 524288 -height 475 -width 59
+            mouse-release 19 403 button1 524288 -height 475 -width 59
+            mouse-press 19 403 button1 -height 475 -width 59
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart | get-edit-part -name Lifeline2] {
+        mouse-release 19 403 button1 524288 -height 475 -width 59
+        get-target-connection 0 | get-edit-part -text Message | activate-direct-edit
+    }
+    get-editbox | set-text Message5
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+            -className InteractionInteractionCompartmentEditPart] {
+            mouse-move 392 465 button1 -height 722 -width 843
+            mouse-press 392 465 button1 -height 722 -width 843
+        }
+        commit-direct-edit
+        get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+            -className InteractionInteractionCompartmentEditPart | mouse-release 392 465 button1 524288 -height 722 
+            -width 843
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part 
+    -name Interaction1 | get-edit-part -className InteractionInteractionCompartmentEditPart | get-edit-part 
+    -name Lifeline2 | get-target-connection 0] {
+    get-property text | equals Message5 | verify-true
+    get-property "source.element.qualifiedName" | equals "model::Interaction1::Lifeline" | verify-true
+    get-property "target.element.qualifiedName" | equals "model::Interaction1::Lifeline2" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

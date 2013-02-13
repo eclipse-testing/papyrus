@@ -1,0 +1,152 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_LHDVAHWiEeKzYsT5EMG8Hw,_0ZVCIHTsEeKCqKlV8_wmTg
+Element-Name: UML Sequence diagrams : Combined Fragments Creation
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: http://jira4.xored.com/browse/QS-2436
+Id: _9mX24HWkEeKzYsT5EMG8Hw
+Save-Time: 2/13/13 2:04 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select CF tool in the palette;
+2. Drop the CF and draw the rectangle on the lifelines;
+3. Then select kind of CFConsider/Ignore or Standard CF;
+4. Change operand to Loop:
+- Click within the operand area
+- Select Loop kind in the properties view
+5. Click on "+" button to specify Guard;
+6. Set Guard name;
+9. Set minint = 2, maxint = 10;
+10. Click OK button;
+11. Make sure that corresponding interaction onstraint has been created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart | mouse-move 840 504 -height 722 -width 843
+    with [get-palette] {
+        get-palette-entry "Message Async" | mouse-move 39 22 -height 23 -width 125
+        get-palette-entry "Message Reply" | mouse-move 110 22 -height 23 -width 125
+        get-palette-entry "Message Async" | mouse-move 92 3 -height 23 -width 125
+        get-palette-entry "Message Sync" | mouse-move 87 2 -height 23 -width 125
+        get-palette-entry Continuation | mouse-move 79 1 -height 23 -width 125
+        get-palette-entry "Interaction Operand" | mouse-move 76 2 -height 37 -width 125
+        get-palette-entry "Consider Ignore Fragment" | mouse-move 71 1 -height 37 -width 125
+    }
+    get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart | mouse-move 558 714 -height 722 -width 843
+    get-tab-folder | get-tab-item "2 LifeLines" | click
+    get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart | mouse-move 577 190 -height 722 -width 843
+    with [get-palette] {
+        get-palette-entry "Behavior Execution Specification" | mouse-move 35 51 -height 52 -width 125
+        get-palette-entry InteractionUse | mouse-move 67 16 -height 23 -width 125
+        get-palette-entry "Combined Fragment" | mouse-move 124 33 -height 37 -width 125
+        get-palette-entry "Interaction Operand" | mouse-move 123 36 -height 37 -width 125
+        get-palette-entry "Combined Fragment" | mouse-move 116 36 -height 37 -width 125
+        with [get-palette-entry Nodes] {
+            mouse-move 74 292 button1 -height 293 -width 125
+            mouse-press 74 292 button1 -height 293 -width 125
+        }
+        get-figure "0/1/1/0/0/13/0/1" | mouse-press 40 0 button1 -height 16 -width 91
+        get-palette-entry Nodes | mouse-release 74 292 button1 524288 -height 293 -width 125
+        get-figure "0/1/1/0/0/13/0/1" | mouse-release 40 0 button1 524288 -height 16 -width 91
+        get-palette-entry Nodes | mouse-hover 74 292 -height 293 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart] {
+        mouse-move 227 403 -height 722 -width 843
+        mouse-move 566 21 -height 722 -width 843
+    }
+    with [get-palette] {
+        get-palette-entry "Zoom In" | mouse-move 18 7 -height 19 -width 19
+        with [get-palette-entry "Combined Fragment"] {
+            mouse-move 63 18 -height 37 -width 125
+            mouse-hover 63 18 -height 37 -width 125
+            mouse-move 63 18 button1 -height 37 -width 125
+            mouse-press 63 18 button1 -height 37 -width 125
+            mouse-release 63 18 button1 524288 -height 37 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+            -className InteractionInteractionCompartmentEditPart] {
+            mouse-move 58 67 button1 -height 722 -width 843
+            mouse-press 58 67 button1 -height 722 -width 843
+            mouse-move 58 68 -mask 524288 -height 722 -width 843
+            mouse-drag 58 68 -mask 524288 -height 722 -width 843
+        }
+        mouse-drag 69 100 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Interaction1 | get-edit-part -name Interaction1] {
+            mouse-drag 530 428 button1 524288 -height 757 -width 857
+            mouse-release 530 428 button1 524288 -height 757 -width 857
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart] {
+        mouse-hover 525 402 -height 722 -width 843
+        mouse-move 433 610 -height 722 -width 843
+    }
+}
+get-view Properties | get-combo -after [get-label "Interaction operator"] | select loop
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part 
+    -name Interaction1 | get-edit-part -className InteractionInteractionCompartmentEditPart] {
+    mouse-move 252 446 -height 722 -width 843
+    with [get-edit-part -name CombinedFragment | get-edit-part -name CombinedFragment | get-edit-part 
+        -name InteractionOperand] {
+        mouse-move 273 141 -height 314 -width 467
+        mouse-hover 273 141 -height 314 -width 467
+        mouse-move 273 141 button1 -height 314 -width 467
+        mouse-press 273 141 button1 -height 314 -width 467
+        mouse-release 273 141 button1 524288 -height 314 -width 467
+        mouse-hover 273 141 -height 314 -width 467
+    }
+    mouse-move 388 594 -height 722 -width 843
+}
+get-view Properties | get-button "Create a new object" | click
+with [get-window "Create a new InteractionConstraint"] {
+    get-editbox -after [get-label Name] | set-text Guard1
+    with [get-button "Create a new object" -after [get-label "<Undefined>" -after [get-label Minint]]] {
+        click
+        get-menu LiteralInteger | click
+    }
+    with [get-window "Create a new LiteralInteger"] {
+        get-editbox -after [get-label Name] | set-text a
+        get-editbox -after [get-label Value] | set-text 2
+        get-button OK | click
+    }
+    with [get-button "Create a new object" -after [get-label "<Undefined>" -after [get-label Maxint]]] {
+        click
+        get-menu LiteralInteger | click
+    }
+    with [get-window "Create a new LiteralInteger"] {
+        get-editbox -after [get-label Name] | set-text b
+        get-editbox -after [get-label Value] | set-text 10
+        get-button OK | click
+    }
+    get-button OK | click
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part 
+    -name Interaction1 | get-edit-part -className InteractionInteractionCompartmentEditPart] {
+    mouse-move 231 428 -height 722 -width 843
+    mouse-move 0 385 -height 722 -width 843
+}
+get-view "Model Explorer" | get-tree 
+    | get-item " model/ Interaction1/fragment \\(10\\)/ CombinedFragment/operand \\(1\\)/ InteractionOperand/guard \\(1\\)" 
+    | get-property caption | equals "guard (1)" | verify-true
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 
+    | get-edit-part -className InteractionInteractionCompartmentEditPart | get-edit-part -name CombinedFragment 
+    | get-edit-part -name CombinedFragment | get-edit-part -name InteractionOperand | get-figure "0/0/0" 
+    | get-property text | equals "[2,10]" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

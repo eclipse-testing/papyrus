@@ -1,0 +1,60 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_LHDVAHWiEeKzYsT5EMG8Hw,_0ZVCIHTsEeKCqKlV8_wmTg
+Element-Name: UML Sequence diagrams : basics  - Lifeline creation
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _I0RaEXWiEeKzYsT5EMG8Hw
+Save-Time: 2/13/13 1:01 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select Lifeline tool in the palette;
+2. Click in the diagram to drop the lifeline;
+3. Verify that the lifeline has been created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-editor "model.di"] {
+    with [get-palette] {
+       
+        with [get-palette-entry Lifeline] {
+            mouse-move 54 11 button1 -height 23 -width 125
+            mouse-press 54 11 button1 -height 23 -width 125
+            mouse-release 54 11 button1 524288 -height 23 -width 125
+            mouse-move 11 16 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart] {
+        mouse-move 243 154 button1 -height 722 -width 843
+        mouse-press 243 154 button1 -height 722 -width 843
+        mouse-release 243 154 button1 524288 -height 722 -width 843
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+            -className InteractionInteractionCompartmentEditPart] {
+            get-edit-part -name Lifeline3 | get-edit-part -name Lifeline3 | activate-direct-edit
+            mouse-move 316 581 -height 722 -width 843
+        }
+        commit-direct-edit
+    }
+}
+
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 
+    | get-edit-part -className InteractionInteractionCompartmentEditPart | mouse-move 3 144 -height 722 -width 843
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part 
+    -name Interaction1 | get-edit-part -className InteractionInteractionCompartmentEditPart] {
+    get-figure "1/0" | get-property childrenCount | equals 1 | verify-true
+    get-edit-part -name Lifeline3 | get-property text | equals Lifeline3 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

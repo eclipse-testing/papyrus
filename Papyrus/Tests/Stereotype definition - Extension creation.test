@@ -1,0 +1,73 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_L6jtMHWwEeK2XrLEzOSSCQ,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Stereotype definition - Extension creation
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _gVxQUHW0EeK2XrLEzOSSCQ
+Save-Time: 2/13/13 3:45 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use the extension tool in the profile diagram palette;
+2. Drag from MyStereotype to Class;
+3. Verify that E_MyStereotype_Class was created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+
+get-view "Project Explorer" | get-tree | select "MyProject/model.profile" | double-click
+with [get-editor "model.profile.di"] {
+    get-diagram -index 1 | get-edit-part -name profile | mouse-move 365 616 -height 617 -width 584
+    get-tab-folder | get-tab-item "Stereotype and Metaclass" | click
+    get-diagram -index 1 | get-edit-part -name profile | mouse-move 583 389 -height 617 -width 584
+    with [get-palette | get-palette-entry Extension] {
+        mouse-move 35 3 button1 -height 23 -width 125
+        mouse-press 35 3 button1 -height 23 -width 125
+        mouse-release 35 3 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name profile] {
+            mouse-move 424 354 -height 617 -width 584
+            with [get-edit-part -name MyStereotype | get-edit-part -className StereotypeAttributeCompartmentEditPart] {
+                mouse-move 71 29 button1 -height 70 -width 100
+                mouse-press 71 29 button1 -height 70 -width 100
+                mouse-move 72 29 -mask 524288 -height 70 -width 100
+                mouse-drag 72 29 -mask 524288 -height 70 -width 100
+            }
+        }
+        mouse-drag 154 350 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name profile] {
+            with [get-edit-part -name Class | get-edit-part -name Class] {
+                mouse-drag 16 1 button1 524288 -height 15 -width 100
+                mouse-release 16 1 button1 524288 -height 15 -width 100
+                mouse-press 16 1 button1 -height 15 -width 100
+                mouse-release 16 1 button1 524288 -height 15 -width 100
+            }
+            get-edit-part -name MyStereotype | mouse-move 78 34 -height 100 -width 100
+            mouse-move 216 400 -height 617 -width 584
+            mouse-hover 216 400 -height 617 -width 584
+            mouse-move 106 397 -height 617 -width 584
+            mouse-hover 106 397 -height 617 -width 584
+            mouse-move 1 367 -height 617 -width 584
+        }
+    }
+}
+with [get-editor "model.profile.di" | get-diagram -index 1 | get-edit-part -name profile | get-edit-part -name Class 
+    | get-target-connection 0] {
+    get-property className | equals "org.eclipse.papyrus.uml.diagram.profile.edit.parts.ExtensionEditPart" | verify-true
+    get-property "source.element.name" | equals MyStereotype | verify-true
+    get-property "target.element.name" | equals Class | verify-true
+}
+get-view "Model Explorer" | get-tree | get-item " profile/ E_MyStereotype_Class1" | get-property caption 
+    | equals "E_MyStereotype_Class1" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

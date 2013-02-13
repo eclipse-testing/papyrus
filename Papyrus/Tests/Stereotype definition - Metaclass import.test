@@ -1,0 +1,70 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_L6jtMHWwEeK2XrLEzOSSCQ,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Stereotype definition - Metaclass import
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _bkO7UHWxEeK2XrLEzOSSCQ
+Save-Time: 2/13/13 2:59 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select the tool “Import Metaclass” within the palette of the profile diagram editor;
+2. Click on the profile diagram where you want to drop the imported metaclass;
+3. Specify which metaclasses you want to import (select Class). 
+4. Press the button with arrow directed from left to right and located between 
+both aforementioned lists;
+5. Press the button “ok” and it is done;
+6. Verify that the imported metaclass is shown on the diagram. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model.profile" | double-click
+with [get-editor "model.profile.di"] {
+    get-diagram -index 1 | get-edit-part -name profile | mouse-move 46 616 -height 617 -width 584
+    get-tab-folder | get-tab-item Stereotype | click
+    get-diagram -index 1 | get-edit-part -name profile | mouse-move 581 91 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry Package | mouse-move 33 22 -height 23 -width 125
+        get-palette-entry Profile | mouse-move 52 21 -height 23 -width 125
+        get-palette-entry Comment | mouse-move 71 22 -height 23 -width 125
+        get-palette-entry Constraint | mouse-move 70 22 -height 23 -width 125
+        get-palette-entry Stereotype | mouse-move 57 22 -height 23 -width 125
+        with [get-palette-entry "Import Metaclass"] {
+            mouse-move 48 19 button1 -height 37 -width 125
+            mouse-press 48 19 button1 -height 37 -width 125
+            mouse-release 48 19 button1 524288 -height 37 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name profile] {
+        mouse-move 100 402 button1 -height 617 -width 584
+        mouse-press 100 402 button1 -height 617 -width 584
+        mouse-release 100 402 button1 524288 -height 617 -width 584
+    }
+}
+with [get-window -from "Window.createShell()"] {
+    with [get-table] {
+            get-cell 31 0 | click
+    }
+    get-button | click
+    get-button OK | click
+}
+with [get-editor "model.profile.di" | get-diagram -index 1 | get-edit-part -name profile] {
+    mouse-hover 468 522 -height 633 -width 584
+    mouse-move 210 436 -height 633 -width 584
+    get-edit-part -name Class | get-edit-part -name Class | mouse-move 95 3 -height 15 -width 100
+}
+with [get-editor "model.profile.di" | get-diagram -index 1 | get-edit-part -name profile] {
+    get-property childrenCount | equals 2 | verify-true
+    get-edit-part -name Class | get-figure 0 | get-property text | equals "«metaclass»Class" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,0 +1,74 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_LHDVAHWiEeKzYsT5EMG8Hw,_0ZVCIHTsEeKCqKlV8_wmTg
+Element-Name: UML Sequence diagrams : basics  - Execution Specification
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _5AHIUHWiEeKzYsT5EMG8Hw
+Save-Time: 2/13/13 1:06 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select ES tool in the palette;
+2. Click and drop the ES on the lifeline;
+3. Verify that there are new created UML Elements:
+• ActionExecutionSpec
+•ActionExecutionSpecStart
+•ActionExecutionSpecFinish
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 
+    | mouse-move 0 537 -height 757 -width 857
+get-view "Model Explorer" | get-tree | get-item " model/ Interaction1/lifeline \\(2\\)/ Lifeline/coveredBy \\(6\\)" 
+    | get-property caption | equals "coveredBy (6)" | verify-true
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart | mouse-move 689 605 -height 722 -width 843
+    get-tab-folder | get-tab-item Lifeline | click
+    get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart | mouse-move 563 253 -height 722 -width 843
+    with [get-palette] {
+        get-palette-entry "Interaction Operand" | mouse-move 18 0 -height 37 -width 125
+        get-palette-entry "Consider Ignore Fragment" | mouse-move 35 0 -height 37 -width 125
+        get-palette-entry "Combined Fragment" | mouse-move 43 0 -height 37 -width 125
+        get-palette-entry InteractionUse | mouse-move 49 0 -height 23 -width 125
+        get-palette-entry "Behavior Execution Specification" | mouse-move 71 0 -height 52 -width 125
+        with [get-palette-entry "Action Execution Specification"] {
+            mouse-move 76 20 button1 -height 37 -width 125
+            mouse-press 76 20 button1 -height 37 -width 125
+            mouse-release 76 20 button1 524288 -height 37 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | get-edit-part 
+        -className InteractionInteractionCompartmentEditPart] {
+        mouse-move 420 133 -height 722 -width 843
+        with [get-edit-part -name Lifeline] {
+            mouse-move 26 122 button1 -height 250 -width 53
+            mouse-press 26 122 button1 -height 250 -width 53
+            mouse-release 26 122 button1 524288 -height 250 -width 53
+        }
+    }
+    get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 | mouse-move 0 493 
+        -height 757 -width 857
+}
+with [get-view "Model Explorer" | get-tree] {
+    get-item " model/ Interaction1/lifeline \\(2\\)/ Lifeline/coveredBy \\(9\\)" | get-property childCount | equals 9 
+        | verify-true
+    get-item " model/ Interaction1/lifeline \\(2\\)/ Lifeline/coveredBy \\(9\\)/ ActionExecSpec2Start" 
+        | get-property caption | equals ActionExecSpec2Start | verify-true
+    get-item " model/ Interaction1/lifeline \\(2\\)/ Lifeline/coveredBy \\(9\\)/ ActionExecSpec2Finish" 
+        | get-property caption | equals ActionExecSpec2Finish | verify-true
+    get-item " model/ Interaction1/lifeline \\(2\\)/ Lifeline/coveredBy \\(9\\)/ ActionExecSpec2" 
+        | get-property caption | equals ActionExecSpec2 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
