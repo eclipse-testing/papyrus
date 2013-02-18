@@ -5,10 +5,9 @@ Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_cuRmQHTlEeKCqKlV8_wmT
 Element-Name: Create New Class Diagram - Scenario2: From a Context Menu
 Element-Type: testcase
 Element-Version: 3.0
-External-Reference: http://jira4.xored.com/browse/QS-2373
+External-Reference: 
 Id: _gumEQHTpEeKCqKlV8_wmTg
-Save-Time: 2/12/13 3:06 PM
-Tags: skipExecution
+Save-Time: 2/18/13 12:28 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
