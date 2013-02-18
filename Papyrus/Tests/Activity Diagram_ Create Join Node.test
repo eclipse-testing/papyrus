@@ -1,0 +1,220 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_dBL1oHmPEeK_kuNbk7Y5fw
+Element-Name: Activity Diagram: Create Join Node
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _IlELMHmZEeK_kuNbk7Y5fw
+Save-Time: 2/18/13 2:05 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use palette tool to add a join node;
+2. Drag 2 incoming control Flows and 1 outcoming object flow.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart | mouse-move 366 592 -height 736 -width 857
+    get-tab-folder | get-tab-item ActivityDiagram3 | click
+    get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart | mouse-move 624 473 -height 736 -width 857
+    with [get-palette] {
+        get-palette-entry "Data Store Node" | mouse-move 9 6 -height 23 -width 125
+        get-palette-entry "Activity Parameter Node" | mouse-move 29 2 -height 37 -width 125
+        get-palette-entry "Fork node" | mouse-move 38 0 -height 23 -width 125
+        with [get-palette-entry "Join node"] {
+            mouse-move 48 4 button1 -height 23 -width 125
+            mouse-press 48 4 button1 -height 23 -width 125
+            mouse-release 48 4 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        mouse-move 344 278 button1 -height 736 -width 857
+        mouse-press 344 278 button1 -height 736 -width 857
+        mouse-release 344 278 button1 524288 -height 736 -width 857
+    }
+    with [get-diagram -index 1] {
+        mouse-hover 344 299 -height 757 -width 857
+        get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | mouse-move 620 234 -height 736 -width 857
+    }
+    with [get-palette] {
+        get-palette-entry "Activity final" | mouse-move 41 22 -height 23 -width 125
+        get-palette-entry "Flow final" | mouse-move 59 22 -height 23 -width 125
+        get-palette-entry "Decision node" | mouse-move 73 21 -height 23 -width 125
+        get-palette-entry "Merge node" | mouse-move 86 22 -height 23 -width 125
+        get-palette-entry "Join node" | mouse-move 90 20 -height 23 -width 125
+        get-palette-entry "Fork node" | mouse-move 97 20 -height 23 -width 125
+        get-palette-entry "Activity Parameter Node" | mouse-move 106 36 -height 37 -width 125
+        get-palette-entry "Data Store Node" | mouse-move 109 20 -height 23 -width 125
+        get-palette-entry "Opaque Action" | mouse-move 113 20 -height 23 -width 125
+        get-palette-entry "Call Behavior Action" | mouse-move 117 36 -height 37 -width 125
+        get-palette-entry "Call Operation Action" | mouse-move 121 36 -height 37 -width 125
+        get-palette-entry "Send Object Action" | mouse-move 124 14 -height 37 -width 125
+        get-palette-entry "Accept Event Action" | mouse-move 107 36 -height 37 -width 125
+        get-palette-entry "Value Specification Action" | mouse-move 106 1 -height 52 -width 125
+        with [get-palette-entry "Control Flow"] {
+            mouse-move 74 7 button1 -height 23 -width 125
+            mouse-press 74 7 button1 -height 23 -width 125
+            mouse-release 74 7 button1 524288 -height 23 -width 125
+        }
+        get-palette-entry "Accept Event Action" | mouse-move 18 0 -height 37 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart] {
+            mouse-move 556 419 -height 736 -width 857
+            mouse-move 443 152 -height 736 -width 857
+            with [get-edit-part -name OpaqueAction2 | get-edit-part -name OpaqueAction2] {
+                mouse-move 26 20 button1 -height 38 -width 84
+                mouse-press 26 20 button1 -height 38 -width 84
+                mouse-move 25 20 -mask 524288 -height 38 -width 84
+                mouse-drag 25 20 -mask 524288 -height 38 -width 84
+            }
+        }
+        mouse-drag 449 160 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name JoinNode1] {
+            mouse-drag 4 22 button1 524288 -height 40 -width 10
+            mouse-release 4 22 button1 524288 -height 40 -width 10
+            mouse-press 4 22 button1 -height 40 -width 10
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name JoinNode1] {
+            mouse-move 4 23 -mask 524288 -height 40 -width 10
+            mouse-drag 4 23 -mask 524288 -height 40 -width 10
+        }
+        mouse-drag 354 328 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart] {
+            mouse-drag 348 301 button1 524288 -height 736 -width 857
+            mouse-release 348 301 button1 524288 -height 736 -width 857
+        }
+    }
+    get-palette | get-palette-entry "Send Signal Action" | mouse-move 12 26 -height 37 -width 125
+    get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name JoinNode1 
+        | get-target-connection 0 | get-edit-part -className ControlFlowNameEditPart | activate-direct-edit
+    get-palette | get-palette-entry "Control Flow" | mouse-move 53 14 -height 23 -width 125
+    get-diagram -index 1 | commit-direct-edit
+    with [get-palette] {
+        with [get-palette-entry "Control Flow"] {
+            mouse-move 53 14 button1 -height 23 -width 125
+            mouse-press 53 14 button1 -height 23 -width 125
+            mouse-release 53 14 button1 524288 -height 23 -width 125
+            mouse-move 46 3 -height 23 -width 125
+        }
+        get-palette-entry "Send Signal Action" | mouse-move 18 4 -height 37 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart] {
+            mouse-move 502 393 -height 736 -width 857
+            with [get-edit-part -name OpaqueAction3 | get-edit-part -name OpaqueAction3] {
+                mouse-move 24 19 button1 -height 38 -width 84
+                mouse-press 24 19 button1 -height 38 -width 84
+                mouse-move 24 20 -mask 524288 -height 38 -width 84
+                mouse-drag 24 20 -mask 524288 -height 38 -width 84
+            }
+        }
+        mouse-drag 500 442 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name JoinNode1] {
+            mouse-drag 0 16 button1 524288 -height 40 -width 10
+            mouse-release 0 16 button1 524288 -height 40 -width 10
+            mouse-press 0 16 button1 -height 40 -width 10
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        with [get-edit-part -name JoinNode1] {
+            mouse-release 0 16 button1 524288 -height 40 -width 10
+            get-target-connection 1 | get-edit-part -className ControlFlowNameEditPart | activate-direct-edit
+        }
+        mouse-move 468 408 -height 736 -width 857
+        mouse-move 624 648 -height 736 -width 857
+    }
+    with [get-palette] {
+        get-palette-entry "Control Flow" | mouse-move 20 22 -height 23 -width 125
+        get-palette-entry "Object Flow" | mouse-move 41 7 -height 23 -width 125
+    }
+    get-diagram -index 1 | commit-direct-edit
+    with [get-palette | get-palette-entry "Object Flow"] {
+        mouse-move 41 7 button1 -height 23 -width 125
+        mouse-press 41 7 button1 -height 23 -width 125
+        mouse-release 41 7 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart] {
+            mouse-move 343 294 -height 736 -width 857
+            mouse-hover 343 294 -height 736 -width 857
+            with [get-edit-part -name JoinNode1] {
+                mouse-move 2 16 -height 40 -width 10
+                mouse-hover 2 16 -height 40 -width 10
+                mouse-move 2 16 button1 -height 40 -width 10
+                mouse-press 2 16 button1 -height 40 -width 10
+                mouse-move 1 16 -mask 524288 -height 40 -width 10
+                mouse-drag 1 16 -mask 524288 -height 40 -width 10
+            }
+        }
+        mouse-drag 351 321 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name OpaqueAction1 
+            | get-edit-part -name OpaqueAction1] {
+            mouse-drag 50 16 button1 524288 -height 38 -width 84
+            mouse-release 50 16 button1 524288 -height 38 -width 84
+            mouse-press 50 16 button1 -height 38 -width 84
+        }
+    }
+}
+get-window -from "Window.createShell()" | get-button OK | click
+with [get-editor "model.di" | get-diagram -index 1] {
+    with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        mouse-move 178 508 -height 736 -width 857
+        get-edit-part -name OpaqueAction1 | get-edit-part -name data | get-target-connection 0 | get-edit-part 
+            -className ObjectFlowNameEditPart | activate-direct-edit
+        mouse-hover 178 508 -height 736 -width 857
+        mouse-move 208 512 -height 736 -width 857
+        mouse-hover 208 512 -height 736 -width 857
+        mouse-move 48 383 -height 736 -width 857
+    }
+    commit-direct-edit
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 
+    | get-edit-part -className CustomActivityActivityContentCompartmentEditPart] {
+    with [get-edit-part -name JoinNode1] {
+        with [get-target-connection 0] {
+            get-property "element.name" | equals ControlFlow1 | verify-true
+            get-property "source.element.name" | equals OpaqueAction2 | verify-true
+            get-property "target.element.name" | equals JoinNode1 | verify-true
+        }
+        with [get-target-connection 1] {
+            get-property "element.name" | equals ControlFlow2 | verify-true
+            get-property "element.source.name" | equals OpaqueAction3 | verify-true
+            get-property "element.target.name" | equals JoinNode1 | verify-true
+        }
+    }
+    with [get-edit-part -name OpaqueAction1 | get-edit-part -name data | get-target-connection 0] {
+        get-property "element.name" | equals ObjectFlow1 | verify-true
+        get-property "source.element.name" | equals JoinNode1 | verify-true
+        get-property "target.element.name" | equals data | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

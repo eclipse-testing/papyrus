@@ -1,0 +1,42 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_dBL1oHmPEeK_kuNbk7Y5fw
+Element-Name: Activity Properties: Change Single Execution Property
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _KnugIHmREeK_kuNbk7Y5fw
+Save-Time: 2/18/13 1:07 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Double-click activity Model in Project Explorer view;
+2. From a Properties view set "Is single execution" flag to "true";
+3. Verify that the corresponding label appeares. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 
+    | mouse-move 0 112 -height 757 -width 857
+get-view "Model Explorer" | get-tree | select " model"
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 
+    | get-edit-part -className CustomActivityActivityContentCompartmentEditPart] {
+    mouse-move 149 205 button1 -height 736 -width 857
+    mouse-press 149 205 button1 -height 736 -width 857
+    mouse-release 149 205 button1 524288 -height 736 -width 857
+    mouse-hover 149 205 -height 736 -width 857
+    mouse-move 395 586 -height 736 -width 857
+}
+get-view Properties | get-button true -after [get-label "Is single execution"] | click
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 
+    | get-figure "0/0/5" | get-property text | equals "<<singleExecution>>" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

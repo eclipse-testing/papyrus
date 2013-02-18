@@ -1,0 +1,60 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _VyKQEHTiEeKCqKlV8_wmTg,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Create New Project with Activity Diagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _UmwccXmOEeK_kuNbk7Y5fw
+Save-Time: 2/18/13 12:50 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select the Papyrus perspective.
+
+• Right click in Project Explorer view,
+• Select « New » > « Other ... »,
+• Choose « Papyrus Project »
+
+2. Fill the project name, click Next;
+3. Select UML language, click Next;
+4. Select the UML Activity Diagram;
+5. A new project is initialized with a model and an Activity diagram;
+6. Verify that the Project with a diagramhas been created and a diagram editor is opened. 
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | get-menu "New/Other..." | click
+with [get-window New] {
+    get-tree | select "Papyrus/Papyrus Project"
+    get-button "Next >" | click
+}
+with [get-window "New Papyrus Project"] {
+    get-editbox -after [get-label "Project name:"] | set-text MyProject
+    get-button "Next >" | click
+    get-group "Diagram Language:" | get-button UML | click
+    get-button "Next >" | click
+    
+    }
+with [get-window "New Papyrus Project"] {
+    get-group "Select a Diagram Kind:" | get-table | get-item "UML Activity Diagram" | check
+    get-button Finish | click
+}
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 
+    | get-edit-part -className CustomActivityActivityContentCompartmentEditPart | mouse-move 49 203 -height 736 
+    -width 857
+with [get-tab-folder -index 3] {
+    get-property activePage | equals "model.di" | verify-true
+    get-property tabCount | equals 1 | verify-true
+}
+get-editor "model.di" | get-tab-folder | get-property activePage | equals NewDiagram | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,0 +1,37 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_dBL1oHmPEeK_kuNbk7Y5fw
+Element-Name: Create New Activity Diagram in Existing Model
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _JWU_IHmQEeK_kuNbk7Y5fw
+Save-Time: 2/18/13 2:13 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. In the Model Explorer view, select the place where to add your diagram;
+2. Select the Activity Diagram menu or click on the corresponding toolbar 
+action;
+3. set Diagram's name and click Finish;
+4. Verify that new activity diagram has been created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+get-view "Model Explorer" | get-tree | select " model" | get-menu "New Diagram/Create a new Activity Diagram" | click
+get-window "Enter a new diagram name" | get-button OK | click
+get-view "Model Explorer" | get-tree | get-item " model" | get-property childCount | equals 5 | verify-true
+with [get-editor "model.di" | get-tab-folder] {
+    get-property pages -index 0 | equals NewDiagram | verify-true
+    get-property pages -index 1 | equals ActivityDiagram | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

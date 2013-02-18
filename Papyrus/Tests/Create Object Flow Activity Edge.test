@@ -1,0 +1,91 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_dBL1oHmPEeK_kuNbk7Y5fw
+Element-Name: Create Object Flow Activity Edge
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _MGhAEHmWEeK_kuNbk7Y5fw
+Save-Time: 2/18/13 1:43 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select the Object Flow edge in the Palette;
+2. Click in the activity, from the source node to the target node, without 
+releasing the mouse button;
+3. Edit the edge's name in the properties view.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart | mouse-move 269 611 -height 736 -width 857
+    get-tab-folder | get-tab-item ActivityDiagram2 | click
+    get-diagram -index 1 | get-edit-part -name Activity3 | get-edit-part -name Activity3 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart | mouse-move 583 510 -height 736 -width 857
+    with [get-palette] {
+        get-palette-entry "Control Flow" | mouse-move 27 22 -height 23 -width 125
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 49 9 button1 -height 23 -width 125
+            mouse-press 49 9 button1 -height 23 -width 125
+            mouse-release 49 9 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity3 | get-edit-part -name Activity3 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart] {
+            mouse-move 148 265 -height 736 -width 857
+            with [get-edit-part -name OpaqueAction1 | get-edit-part -name OpaqueAction1] {
+                mouse-move 75 19 button1 -height 38 -width 84
+                mouse-press 75 19 button1 -height 38 -width 84
+                mouse-move 76 19 -mask 524288 -height 38 -width 84
+                mouse-drag 76 19 -mask 524288 -height 38 -width 84
+            }
+        }
+        mouse-drag 144 286 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity3 | get-edit-part -name Activity3 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name OpaqueAction2 
+            | get-edit-part -name OpaqueAction2] {
+            mouse-drag 26 16 button1 524288 -height 38 -width 84
+            mouse-release 26 16 button1 524288 -height 38 -width 84
+            mouse-press 26 16 button1 -height 38 -width 84
+        }
+    }
+}
+with [get-window -from "Window.createShell()"] {
+    with [get-section "Pins initialization"] {
+        with [get-button "..."] {
+            click
+            click
+        }
+        get-editbox -after [get-label "Type:"] | click-text
+    }
+    get-button OK | click
+}
+with [get-editor "model.di" | get-diagram -index 1] {
+    with [get-edit-part -name Activity3 | get-edit-part -name Activity3 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        mouse-move 301 293 -height 736 -width 857
+        get-edit-part -name OpaqueAction2 | get-edit-part -name data | get-target-connection 0 | get-edit-part 
+            -className ObjectFlowNameEditPart | activate-direct-edit
+        mouse-hover 301 293 -height 736 -width 857
+        mouse-move 128 422 -height 736 -width 857
+        mouse-hover 128 422 -height 736 -width 857
+        mouse-move 6 480 -height 736 -width 857
+    }
+    commit-direct-edit
+}
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Activity3 | get-edit-part -name Activity3 
+    | get-edit-part -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name OpaqueAction2 
+    | get-edit-part -name data | get-target-connection 0 | get-property "element.name" | equals ObjectFlow1 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

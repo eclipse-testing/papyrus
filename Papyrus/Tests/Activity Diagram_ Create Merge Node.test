@@ -1,0 +1,221 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_dBL1oHmPEeK_kuNbk7Y5fw
+Element-Name: Activity Diagram: Create Merge Node
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _itC2IHmYEeK_kuNbk7Y5fw
+Save-Time: 2/18/13 2:01 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use palette tool to add a merge node;
+2. Drag 2 incoming control Flows and 1 outcoming.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 | mouse-move 208 19 
+        -height 757 -width 857
+    with [get-palette] {
+        get-palette-entry "Initial node" | mouse-move 123 1 -height 23 -width 125
+        get-palette-entry "Fork node" | mouse-move 95 22 -height 23 -width 125
+        get-palette-entry "Activity Parameter Node" | mouse-move 65 32 -height 37 -width 125
+        get-palette-entry "Data Store Node" | mouse-move 48 22 -height 23 -width 125
+        get-palette-entry "Opaque Action" | mouse-move 9 18 -height 23 -width 125
+    }
+    get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart | mouse-move 280 607 -height 736 -width 857
+    get-tab-folder | get-tab-item ActivityDiagram3 | click
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        mouse-move 530 437 -height 736 -width 857
+        mouse-move 611 324 -height 736 -width 857
+    }
+    with [get-palette | get-palette-entry "Merge node"] {
+        mouse-move 33 13 button1 -height 23 -width 125
+        mouse-press 33 13 button1 -height 23 -width 125
+        mouse-release 33 13 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        mouse-move 353 284 button1 -height 736 -width 857
+        mouse-press 353 284 button1 -height 736 -width 857
+        mouse-release 353 284 button1 524288 -height 736 -width 857
+    }
+    with [get-diagram -index 1] {
+        get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | mouse-move 351 284 -height 736 -width 857
+        mouse-hover 351 327 -height 779 -width 857
+        get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | mouse-move 613 250 -height 736 -width 857
+    }
+    with [get-palette] {
+        with [get-palette-entry "Flow final"] {
+            mouse-move 60 0 -height 23 -width 125
+            mouse-move 66 22 -height 23 -width 125
+        }
+        get-palette-entry "Decision node" | mouse-move 66 22 -height 23 -width 125
+        get-palette-entry "Merge node" | mouse-move 65 17 -height 23 -width 125
+        get-palette-entry "Join node" | mouse-move 63 22 -height 23 -width 125
+        get-palette-entry "Fork node" | mouse-move 63 15 -height 23 -width 125
+        get-palette-entry "Activity Parameter Node" | mouse-move 61 36 -height 37 -width 125
+        get-palette-entry "Data Store Node" | mouse-move 60 17 -height 23 -width 125
+        get-palette-entry "Opaque Action" | mouse-move 60 2 -height 23 -width 125
+        get-palette-entry "Call Operation Action" | mouse-move 59 30 -height 37 -width 125
+        get-palette-entry "Send Object Action" | mouse-move 59 35 -height 37 -width 125
+        get-palette-entry "Send Signal Action" | mouse-move 62 34 -height 37 -width 125
+        get-palette-entry "Accept Event Action" | mouse-move 66 31 -height 37 -width 125
+        with [get-palette-entry "Control Flow"] {
+            mouse-move 72 5 button1 -height 23 -width 125
+            mouse-press 72 5 button1 -height 23 -width 125
+            mouse-release 72 5 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart] {
+            mouse-move 424 162 -height 736 -width 857
+            with [get-edit-part -name OpaqueAction2 | get-edit-part -name OpaqueAction2] {
+                mouse-move 16 16 button1 -height 38 -width 84
+                mouse-press 16 16 button1 -height 38 -width 84
+                mouse-move 16 13 -mask 524288 -height 38 -width 84
+                mouse-drag 16 13 -mask 524288 -height 38 -width 84
+            }
+        }
+        mouse-drag 440 153 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name MergeNode1] {
+            mouse-drag 11 10 button1 524288 -height 30 -width 20
+            mouse-release 11 10 button1 524288 -height 30 -width 20
+            mouse-press 11 10 button1 -height 30 -width 20
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        get-edit-part -name MergeNode1 | mouse-release 11 10 button1 524288 -height 30 -width 20
+        mouse-move 472 392 -height 736 -width 857
+        mouse-move 607 530 -height 736 -width 857
+    }
+    with [get-palette] {
+        get-palette-entry "Accept Event Action" | mouse-move 39 30 -height 37 -width 125
+        get-palette-entry "Object Flow" | mouse-move 88 5 -height 23 -width 125
+    }
+    get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name MergeNode1 
+        | get-target-connection 0 | get-edit-part -className ControlFlowNameEditPart | activate-direct-edit
+    with [get-palette] {
+        get-palette-entry "Accept Event Action" | mouse-move 21 1 -height 37 -width 125
+        get-palette-entry "Control Flow" | mouse-move 85 8 -height 23 -width 125
+    }
+    get-diagram -index 1 | commit-direct-edit
+    with [get-palette | get-palette-entry "Control Flow"] {
+        mouse-move 85 8 button1 -height 23 -width 125
+        mouse-press 85 8 button1 -height 23 -width 125
+        mouse-release 85 8 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name OpaqueAction3 
+            | get-edit-part -name OpaqueAction3] {
+            mouse-move 7 15 button1 -height 38 -width 84
+            mouse-press 7 15 button1 -height 38 -width 84
+            mouse-move 8 15 -mask 524288 -height 38 -width 84
+            mouse-drag 8 15 -mask 524288 -height 38 -width 84
+        }
+        mouse-drag 484 437 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name MergeNode1] {
+            mouse-drag 10 13 button1 524288 -height 30 -width 20
+            mouse-release 10 13 button1 524288 -height 30 -width 20
+            mouse-press 10 13 button1 -height 30 -width 20
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        with [get-edit-part -name MergeNode1] {
+            mouse-release 10 13 button1 524288 -height 30 -width 20
+            mouse-move 9 13 -height 30 -width 20
+            get-target-connection 1 | get-edit-part -className ControlFlowNameEditPart | activate-direct-edit
+        }
+        mouse-move 484 380 -height 736 -width 857
+        mouse-move 603 465 -height 736 -width 857
+    }
+    with [get-palette] {
+        get-palette-entry "Send Object Action" | mouse-move 49 35 -height 37 -width 125
+        get-palette-entry "Send Signal Action" | mouse-move 72 36 -height 37 -width 125
+        get-palette-entry "Accept Event Action" | mouse-move 70 31 -height 37 -width 125
+        get-palette-entry "Control Flow" | mouse-move 57 13 -height 23 -width 125
+    }
+    get-diagram -index 1 | commit-direct-edit
+    with [get-palette | get-palette-entry "Control Flow"] {
+        mouse-move 57 13 button1 -height 23 -width 125
+        mouse-press 57 13 button1 -height 23 -width 125
+        mouse-release 57 13 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name MergeNode1] {
+            mouse-move 6 13 button1 -height 30 -width 20
+            mouse-press 6 13 button1 -height 30 -width 20
+            mouse-move 7 13 -mask 524288 -height 30 -width 20
+            mouse-drag 7 13 -mask 524288 -height 30 -width 20
+        }
+        mouse-drag 366 324 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name OpaqueAction1 
+            | get-edit-part -name OpaqueAction1] {
+            mouse-drag 55 22 button1 524288 -height 38 -width 84
+            mouse-release 55 22 button1 524288 -height 38 -width 84
+            mouse-press 55 22 button1 -height 38 -width 84
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart] {
+            with [get-edit-part -name OpaqueAction1] {
+                with [get-edit-part -name OpaqueAction1] {
+                    mouse-release 55 22 button1 524288 -height 38 -width 84
+                    mouse-move 54 22 -height 38 -width 84
+                }
+                get-target-connection 0 | get-edit-part -className ControlFlowNameEditPart | activate-direct-edit
+                get-edit-part -name OpaqueAction1 | mouse-hover 54 22 -height 38 -width 84
+            }
+            mouse-move 46 304 -height 736 -width 857
+        }
+        commit-direct-edit
+        get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | mouse-move 349 259 -height 736 -width 857
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 
+    | get-edit-part -className CustomActivityActivityContentCompartmentEditPart] {
+    with [get-edit-part -name MergeNode1] {
+        with [get-target-connection 0] {
+            get-property "element.name" | equals ControlFlow1 | verify-true
+            get-property "element.source.name" | equals OpaqueAction2 | verify-true
+            get-property "element.target.name" | equals MergeNode1 | verify-true
+        }
+        with [get-target-connection 1] {
+            get-property "element.name" | equals ControlFlow2 | verify-true
+            get-property "element.source.name" | equals OpaqueAction3 | verify-true
+            get-property "element.target.name" | equals MergeNode1 | verify-true
+        }
+    }
+    with [get-edit-part -name OpaqueAction1 | get-target-connection 0] {
+        get-property "element.name" | equals ControlFlow3 | verify-true
+        get-property "source.element.name" | equals MergeNode1 | verify-true
+        get-property "target.element.name" | equals OpaqueAction1 | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
