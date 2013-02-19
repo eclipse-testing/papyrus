@@ -1,0 +1,245 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_lauxEHpsEeKeS_winlSmvQ
+Element-Name: UML Example: Create Package Import
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _MtaQ0HpuEeKeS_winlSmvQ
+Save-Time: 2/19/13 3:36 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select "Package" tool on a palette and create two Package elements;
+2. Rename one to "System" and another to "Type";
+3. Select "Package Import" from edges list on a palette and draw a connection from system to Type;
+4. Draw "import" label anywhere you want;
+5. Verify that 2 packages were created in Model Explorer;
+6. Right-click Type in Model Explorer and select "Create new Class Diagram". set Diagram name to "ClassDiagram of Type";
+7. Create one more class diagram for system. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name model | mouse-move 582 135 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry Comment | mouse-move 14 22 -height 23 -width 125
+        get-palette-entry Component | mouse-move 66 22 -height 23 -width 125
+        get-palette-entry Constraint | mouse-move 74 21 -height 23 -width 125
+        get-palette-entry DataType | mouse-move 82 22 -height 23 -width 125
+        get-palette-entry DurationObservation | mouse-move 90 22 -height 23 -width 125
+        get-palette-entry Enumeration | mouse-move 98 22 -height 23 -width 125
+        get-palette-entry "Enumeration literal" | mouse-move 102 36 -height 37 -width 125
+        get-palette-entry Interface | mouse-move 88 16 -height 23 -width 125
+        with [get-palette-entry Nodes] {
+            mouse-move 62 287 button1 -height 293 -width 125
+            mouse-press 62 287 button1 -height 293 -width 125
+        }
+        get-figure "0/1/1/0/0/16/0/1" | mouse-press 28 12 button1 -height 16 -width 91
+        get-palette-entry Nodes | mouse-release 62 287 button1 524288 -height 293 -width 125
+        get-figure "0/1/1/0/0/16/0/1" | mouse-release 28 12 button1 524288 -height 16 -width 91
+        with [get-palette-entry Nodes] {
+            mouse-hover 62 287 -height 293 -width 125
+            mouse-press 62 287 button1 -height 293 -width 125
+        }
+        get-figure "0/1/1/0/0/22/0/1" | mouse-press 28 8 button1 -height 16 -width 91
+        get-palette-entry Nodes | mouse-release 62 287 button1 524288 -height 293 -width 125
+        get-figure "0/1/1/0/0/22/0/1" | mouse-release 28 8 button1 524288 -height 16 -width 91
+        get-palette-entry TemplateParameter | mouse-move 57 0 -height 23 -width 125
+        get-palette-entry Slot | mouse-move 51 1 -height 23 -width 125
+        get-palette-entry Signal | mouse-move 43 2 -height 23 -width 125
+        get-palette-entry RedefinableTemplateSignature | mouse-move 37 0 -height 23 -width 125
+        get-palette-entry Reception | mouse-move 35 0 -height 23 -width 125
+        get-palette-entry Property | mouse-move 34 0 -height 23 -width 125
+        with [get-palette-entry Package] {
+            mouse-move 39 13 button1 -height 23 -width 125
+            mouse-press 39 13 button1 -height 23 -width 125
+            mouse-release 39 13 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name model] {
+            mouse-move 37 75 button1 -height 617 -width 584
+            mouse-press 37 75 button1 -height 617 -width 584
+            mouse-move 37 76 -mask 524288 -height 617 -width 584
+            mouse-drag 37 76 -mask 524288 -height 617 -width 584
+        }
+        mouse-drag 43 82 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name model] {
+            mouse-drag 532 240 button1 524288 -height 617 -width 584
+            mouse-release 532 240 button1 524288 -height 617 -width 584
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name model] {
+            get-edit-part -name Package1 | get-edit-part -text Package1 | activate-direct-edit
+            mouse-hover 532 240 -height 617 -width 584
+        }
+        get-figure "1/9" | mouse-hover 585 30 -height 40 -width 640
+    }
+    with [get-editbox] {
+        set-text System
+        key-type Enter
+    }
+    get-diagram -index 1 | commit-direct-edit
+    with [get-palette] {
+        get-palette-entry Package | mouse-move 50 1 -height 23 -width 125
+        get-palette-entry OperationTemplateParameter | mouse-move 76 0 -height 23 -width 125
+        with [get-palette-entry Operation] {
+            mouse-move 90 8 -height 23 -width 125
+            mouse-hover 90 8 -height 23 -width 125
+        }
+        get-palette-entry Package | mouse-move 62 21 -height 23 -width 125
+        get-palette-entry Property | mouse-move 55 22 -height 23 -width 125
+        get-palette-entry Reception | mouse-move 53 7 -height 23 -width 125
+        get-palette-entry RedefinableTemplateSignature | mouse-move 39 22 -height 23 -width 125
+        with [get-palette-entry Package] {
+            mouse-move 64 13 button1 -height 23 -width 125
+            mouse-press 64 13 button1 -height 23 -width 125
+            mouse-release 64 13 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name model] {
+            mouse-move 35 312 -height 617 -width 584
+            mouse-hover 35 312 -height 617 -width 584
+            mouse-move 35 312 button1 -height 617 -width 584
+            mouse-press 35 312 button1 -height 617 -width 584
+            mouse-move 35 313 -mask 524288 -height 617 -width 584
+            mouse-drag 35 313 -mask 524288 -height 617 -width 584
+        }
+        mouse-drag 41 319 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name model] {
+            mouse-drag 533 496 button1 524288 -height 617 -width 584
+            mouse-release 533 496 button1 524288 -height 617 -width 584
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name model] {
+        get-edit-part -name Package1 | get-edit-part -text Package1 | activate-direct-edit
+        mouse-hover 533 496 -height 617 -width 584
+        mouse-move 532 494 -height 617 -width 584
+        get-edit-part -name Package1 | get-handle ResizeHandle -index 4 | mouse-hover 1 0 -height 7 -width 7
+    }
+    with [get-editbox] {
+        set-text Type
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name model | mouse-move 583 573 -height 617 -width 584
+    }
+   
+}
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name model | mouse-move 577 512 -height 617 -width 612
+    with [get-palette] {
+        get-palette-entry Dependency | mouse-move 12 15 -height 23 -width 125
+        get-palette-entry ContainmentLink | mouse-move 92 2 -height 23 -width 125
+        get-palette-entry AssociationClass | mouse-move 114 14 -height 23 -width 125
+        get-palette-entry Generalization | mouse-move 91 22 -height 23 -width 125
+        get-palette-entry GeneralizationSet | mouse-move 67 22 -height 23 -width 125
+        with [get-palette-entry Edges] {
+            mouse-move 60 291 button1 -height 294 -width 125
+            mouse-press 60 291 button1 -height 294 -width 125
+        }
+        get-figure "0/2/1/0/0/16/0/1" | mouse-press 26 3 button1 -height 16 -width 91
+        get-palette-entry Edges | mouse-release 60 291 button1 524288 -height 294 -width 125
+        get-figure "0/2/1/0/0/16/0/1" | mouse-release 26 3 button1 524288 -height 16 -width 91
+        get-palette-entry Edges | mouse-hover 60 291 -height 294 -width 125
+        get-palette-entry ProfileApplication | mouse-move 57 0 -height 23 -width 125
+        get-palette-entry PackageMerge | mouse-move 58 0 -height 23 -width 125
+        with [get-palette-entry PackageImport] {
+            mouse-move 60 13 button1 -height 23 -width 125
+            mouse-press 60 13 button1 -height 23 -width 125
+            mouse-release 60 13 button1 524288 -height 23 -width 125
+            mouse-move 54 0 -height 23 -width 125
+        }
+        get-palette-entry Link | mouse-move 35 1 -height 23 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name model] {
+            mouse-move 512 455 -height 617 -width 612
+            with [get-edit-part -name Type | get-edit-part -className PackagePackageableElementCompartmentEditPart] {
+                mouse-move 94 16 button1 -height 160 -width 505
+                mouse-press 94 16 button1 -height 160 -width 505
+                mouse-move 94 17 -mask 524288 -height 160 -width 505
+                mouse-drag 94 17 -mask 524288 -height 160 -width 505
+            }
+        }
+        mouse-drag 104 356 -mask 524288 -height 617 -width 612
+        with [get-edit-part -name model | get-edit-part -name System | get-edit-part 
+            -className PackagePackageableElementCompartmentEditPart] {
+            mouse-drag 105 114 button1 524288 -height 148 -width 493
+            mouse-release 105 114 button1 524288 -height 148 -width 493
+            mouse-hover 105 114 -height 148 -width 493
+            mouse-press 105 114 button1 -height 148 -width 493
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name model] {
+            with [get-edit-part -name System | get-edit-part -className PackagePackageableElementCompartmentEditPart] {
+                mouse-release 109 114 button1 524288 -height 148 -width 493
+                mouse-hover 109 114 -height 148 -width 493
+            }
+            mouse-move 10 494 -height 617 -width 608
+            mouse-move 170 311 -height 617 -width 608
+            with [get-edit-part -name System | get-target-connection 0 | get-edit-part -text "«import»"] {
+                mouse-move 28 10 button1 -height 15 -width 49
+                mouse-press 28 10 button1 -height 15 -width 49
+                mouse-drag 46 2 -mask 524288 -height 15 -width 49
+            }
+        }
+        mouse-drag 188 304 -mask 524288 -height 617 -width 608
+        with [get-edit-part -name model] {
+            mouse-drag 240 283 button1 524288 -height 617 -width 608
+            mouse-release 240 283 button1 524288 -height 617 -width 608
+            with [get-edit-part -name System | get-target-connection 0 | get-edit-part -text "«import»"] {
+                mouse-hover 25 9 -height 15 -width 49
+                mouse-move 25 9 button1 -height 15 -width 49
+                mouse-press 25 9 button1 -height 15 -width 49
+                mouse-drag 24 9 -mask 524288 -height 15 -width 49
+            }
+        }
+        mouse-drag 245 290 -mask 524288 -height 617 -width 608
+        with [get-edit-part -name model] {
+            mouse-drag 78 282 button1 524288 -height 617 -width 608
+            mouse-release 78 282 button1 524288 -height 617 -width 608
+            get-edit-part -name System | get-target-connection 0 | get-edit-part -text "«import»" | mouse-hover 27 4 
+                -height 15 -width 49
+            get-edit-part -name Type | get-edit-part -className PackagePackageableElementCompartmentEditPart 
+                | mouse-move 8 17 -height 160 -width 505
+        }
+    }
+}
+with [get-view "Model Explorer" | get-tree] {
+    get-item " model/ System" | get-property caption | equals System | verify-true
+    get-item " model/ Type" | get-property caption | equals Type | verify-true
+}
+get-view "Model Explorer" | get-tree | select " model/ Type" | get-menu "New Diagram/Create a new Class Diagram" | click
+with [get-window "Enter a new diagram name"] {
+    get-editbox -after [get-label "The new diagram name:"] | set-text "ClassDiagram of Type"
+    get-button OK | click
+}
+get-view "Model Explorer" | get-tree | select " model/ System" | get-menu "New Diagram/Create a new Class Diagram" 
+    | click
+with [get-window "Enter a new diagram name"] {
+    get-editbox -after [get-label "The new diagram name:"] | set-text "ClassDiagram of System"
+    get-button OK | click
+}
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name System | mouse-move 0 436 -height 617 -width 584
+with [get-editor "model.di" | get-tab-folder] {
+    get-property pages -index 0 | equals ClassDiagram | verify-true
+    get-property pages -index 1 | equals "ClassDiagram of Type" | verify-true
+    get-property pages -index 2 | equals "ClassDiagram of System" | verify-true
+    get-property tabCount | equals 3 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

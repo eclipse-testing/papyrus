@@ -1,0 +1,70 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_nSYJAHqJEeKeS_winlSmvQ
+Element-Name: StateMachine: Change Region Fill Color
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _qDaGMHqJEeKeS_winlSmvQ
+Save-Time: 2/19/13 6:54 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select a region inside MyState and switch to Appearance section in Properties view;
+2. Try to change Fill Color by selecting different colors;
+3. Verify that color change works ok. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name StateMachine0 | get-edit-part 
+    -name StateMachine0 | get-edit-part -className CustomStateMachineCompartmentEditPart | get-edit-part -name Region0 
+    | get-edit-part -name Region0 | get-edit-part -name MyState] {
+    mouse-move 0 58 -height 102 -width 200
+    with [get-edit-part -className CustomStateCompartmentEditPart | get-edit-part -name MyRegion | get-edit-part 
+        -name MyRegion] {
+        mouse-move 76 35 button1 -height 87 -width 200
+        mouse-press 76 35 button1 -height 87 -width 200
+        mouse-release 76 35 button1 524288 -height 87 -width 200
+        mouse-hover 76 35 -height 87 -width 200
+    }
+}
+with [get-view Properties] {
+    with [get-canvas -after [get-label MyRegion] -index 4] {
+        mouse-press 36 12 button1
+        mouse-release 36 12 button1 524288
+        mouse-move 83 10
+    }
+    get-group Fill | get-button | click
+}
+get-window -from "ColorPalettePopup.<init>()" | get-button -index 5 | click
+
+
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name StateMachine0 | get-edit-part -name StateMachine0 
+    | get-edit-part -className CustomStateMachineCompartmentEditPart | get-edit-part -name Region0 | get-edit-part 
+    -name Region0 | get-edit-part -name MyState | get-edit-part -className CustomStateCompartmentEditPart 
+    | get-edit-part -name MyRegion | get-edit-part -name MyRegion | get-property backgroundColor | equals "#9BC7CC" 
+    | verify-true
+get-view Properties | get-group Fill | get-button | click
+get-window -from "ColorPalettePopup.<init>()" | get-button -index 2 | click
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name StateMachine0 | get-edit-part -name StateMachine0 
+    | get-edit-part -className CustomStateMachineCompartmentEditPart | get-edit-part -name Region0 | get-edit-part 
+    -name Region0 | get-edit-part -name MyState | get-edit-part -className CustomStateCompartmentEditPart 
+    | get-edit-part -name MyRegion | get-edit-part -name MyRegion | get-property backgroundColor | equals "#B897C0" 
+    | verify-true
+get-view Properties | get-group Fill | get-button | click
+get-window -from "ColorPalettePopup.<init>()" | get-button -index 9 | click
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name StateMachine0 | get-edit-part -name StateMachine0 
+    | get-edit-part -className CustomStateMachineCompartmentEditPart | get-edit-part -name Region0 | get-edit-part 
+    -name Region0 | get-edit-part -name MyState | get-edit-part -className CustomStateCompartmentEditPart 
+    | get-edit-part -name MyRegion | get-edit-part -name MyRegion | get-property backgroundColor | equals "#E1E187" 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

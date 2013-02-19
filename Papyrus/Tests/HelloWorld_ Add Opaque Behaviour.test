@@ -1,0 +1,96 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_B9tgAHqGEeKeS_winlSmvQ,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: HelloWorld: Add Opaque Behaviour
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _Fu1oQHqGEeKeS_winlSmvQ
+Save-Time: 2/19/13 6:26 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Open "main" operation properties;
+2. Click "+" button to add method;
+3. Click "+" button to add new OpaqueBehaviour;
+4. Select HelloWorld class as a container;
+5. Select ownedBehaviour - Behaviour as a reference;
+6. Set "OB" as a name;
+7. select Java as a language;
+8. Type text into a Bode textbox:
+
+System.out.println("Hello, World!")
+9. Verify that OB appeared in Methods section. 
+
+
+
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "HelloWorld/mdl/model" | double-click
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name model] {
+    mouse-move 2 223 -height 617 -width 649
+    with [get-edit-part -name "com.cea.example" | get-edit-part 
+        -className PackagePackageableElementCompartmentEditPart] {
+        mouse-move 71 97 -height 208 -width 529
+        with [get-edit-part -name HelloWorld | get-edit-part -text "+ main( + in: String{unique})"] {
+            with [get-edit-part -name main] {
+                mouse-move 30 11 button1 -height 15 -width 231
+                mouse-press 30 11 button1 -height 15 -width 231
+                mouse-release 30 11 button1 524288 -height 15 -width 231
+                mouse-hover 30 11 -height 15 -width 231
+            }
+            mouse-move 45 53 -height 55 -width 241
+        }
+    }
+    mouse-move 309 616 -height 617 -width 649
+}
+get-view Properties | get-button "Add elements" | click
+with [get-window Method] {
+    with [get-button "Create a new element"] {
+        click
+        get-menu OpaqueBehavior | click
+    }
+    with [get-window "Create a new OpaqueBehavior"] {
+        get-button "Edit the reference value" | click
+        with [get-window "Container :"] {
+            get-tree | select " model/ com.cea.example/ HelloWorld"
+            get-button OK | click
+        }
+        get-button "Edit the reference value" -after [get-label "Reference :"] | click
+        with [get-window "Reference :"] {
+            get-tree | select "ownedBehavior : Behavior"
+            get-button OK | click
+        }
+        get-button OK | click
+    }
+    with [get-window "Create a new OpaqueBehavior"] {
+        get-editbox -after [get-label Name] | set-text OB
+        get-button "Add elements" | click
+        with [get-window Language] {
+            get-list | select Java | click -default
+            get-button OK | click
+        }
+        with [get-editbox -after [get-label Body]] {
+            set-text "system.out.println()"
+            key-type Left
+            set-text "system.out.println(\"\")"
+            key-type Left
+            set-text "system.out.println(\"Hello, World!\")"
+        }
+        get-button OK | click
+    }
+    get-button OK | click
+}
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name model | mouse-move 1 561 -height 617 -width 649
+get-view Properties | get-tree | get-item OB | get-property caption | equals OB | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

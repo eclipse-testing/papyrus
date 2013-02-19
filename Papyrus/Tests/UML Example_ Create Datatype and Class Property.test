@@ -1,0 +1,170 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_9UK5IHpxEeKeS_winlSmvQ
+Element-Name: UML Example: Create Datatype and Class Property
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _JoApUHpyEeKeS_winlSmvQ
+Save-Time: 2/19/13 4:02 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Open ClassDiagram of System and create new Datatype "Speed";
+2. Switch to ClassDiagram of system and create new Class "Car";
+3. In Model Explorer right-click Car and select Create New Property;
+4. Drag property into Attribute Compartment of a Car;
+5. In Properties view change property type to Speed;
+6. Verify that property type is updated on a diagram. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name model | mouse-move 46 615 -height 617 -width 608
+    get-tab-folder | get-tab-item "ClassDiagram of Type" | click
+    get-diagram -index 1 | get-edit-part -name Type | mouse-move 583 232 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry DurationObservation | mouse-move 44 0 -height 23 -width 125
+        with [get-palette-entry DataType] {
+            mouse-move 55 16 button1 -height 23 -width 125
+            mouse-press 55 16 button1 -height 23 -width 125
+            mouse-release 55 16 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Type] {
+        mouse-move 216 193 button1 -height 617 -width 584
+        mouse-press 216 193 button1 -height 617 -width 584
+        mouse-release 216 193 button1 524288 -height 617 -width 584
+    }
+    with [get-diagram -index 1] {
+        get-edit-part -name Type | get-edit-part -name DataType1 | get-edit-part -text DataType1 | activate-direct-edit
+        //get-figure "1/15" | mouse-hover 272 30 -height 40 -width 640
+    }
+    with [get-editbox] {
+        set-text Speed
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name Type | mouse-move 582 420 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry ElementImport | mouse-move 16 22 -height 23 -width 125
+        get-palette-entry Generalization | mouse-move 25 20 -height 23 -width 125
+    }
+    get-diagram -index 1 | get-edit-part -name Type | mouse-move 516 616 -height 617 -width 584
+    get-tab-folder | get-tab-item "ClassDiagram of System" | click
+    get-diagram -index 1 | get-edit-part -name System | mouse-move 582 201 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry ClassifierTemplateParameter | mouse-move 16 1 -height 23 -width 125
+        with [get-palette-entry Class] {
+            mouse-move 39 3 button1 -height 23 -width 125
+            mouse-press 39 3 button1 -height 23 -width 125
+            mouse-release 39 3 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name System] {
+        mouse-move 241 173 button1 -height 617 -width 584
+        mouse-press 241 173 button1 -height 617 -width 584
+        mouse-release 241 173 button1 524288 -height 617 -width 584
+    }
+    with [get-diagram -index 1 | get-edit-part -name System | get-edit-part -name Class1] {
+        get-edit-part -text Class1 | activate-direct-edit
+        get-handle ResizeHandle -index 6 | mouse-hover 4 4 -height 7 -width 7
+    }
+    get-editbox | set-text Car
+    with [get-diagram -index 1] {
+        with [get-edit-part -name System] {
+            mouse-move 201 123 button1 -height 617 -width 584
+            mouse-press 201 123 button1 -height 617 -width 584
+        }
+        commit-direct-edit
+        get-figure "1/18" | mouse-release 257 30 button1 524288 -height 40 -width 640
+        get-edit-part -name System | mouse-move 0 302 -height 617 -width 584
+    }
+}
+get-view "Model Explorer" | get-tree | select " model/ System/ Car" | get-menu "New Child/Create a new Property" | click
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name System | mouse-move 1 523 -height 617 -width 584
+with [get-view "Model Explorer" | get-tree] {
+    select " model/ System/ Car/ownedAttribute \\(1\\)/ property1"
+    get-item " model/ System/ Car/ownedAttribute \\(1\\)/ property1" | drag-start "-1" 8
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name System] {
+    drag-enter 175 368 -detail 2 -operation 7
+    drag-over 276 279 -detail 1 -operation 7
+    with [get-edit-part -name Car] {
+        get-edit-part -className ClassNestedClassifierCompartmentEditPart | drag-over 54 -operation 7
+        get-edit-part -className ClassOperationCompartmentEditPart | drag-over 75 -operation 7
+        get-figure "0/0" | drag-over 76 47 -operation 7
+        get-edit-part -className ClassAttributeCompartmentEditPart | get-figure "1/0/0" | drag-over 66 11 -detail 1 
+            -operation 7
+    }
+    drag-exit
+    get-edit-part -name Car | get-edit-part -className ClassAttributeCompartmentEditPart | get-figure "1/0/0" 
+        | drag-accept 66 11 -detail 1 -operation 7
+}
+get-view "Model Explorer" | get-tree | drag-set-data
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name System | get-edit-part -name Car | get-edit-part 
+    -className ClassAttributeCompartmentEditPart | get-figure "1/0/0" | drop 66 11 -detail 1 -operation 7
+with [get-view "Model Explorer" | get-tree] {
+    drag-set-data
+    drag-set-data
+    drag-set-data
+    drag-end -detail 1
+}
+with [get-editor "model.di" | get-diagram -index 1] {
+    with [get-edit-part -name System | get-edit-part -name Car] {
+        with [get-edit-part -text "+ property1: <Undefined>"] {
+            mouse-move 66 12 -height 28 -width 100
+           
+        }
+        with [get-edit-part -className ClassOperationCompartmentEditPart] {
+            mouse-release 76 0 button1 524288 -height 25 -width 153
+            mouse-hover 76 0 -height 25 -width 153
+        }
+        with [get-edit-part -text "+ property1: <Undefined>" | get-edit-part -name property1] {
+            mouse-move 97 6 button1 -height 15 -width 143
+            mouse-press 97 6 button1 -height 15 -width 143
+            mouse-move 98 6 -mask 524288 -height 15 -width 143
+            mouse-drag 98 6 -mask 524288 -height 15 -width 143
+        }
+    }
+    mouse-drag 406 206 -mask 524288 -height 617 -width 640
+    with [get-edit-part -name System | get-edit-part -name Car | get-edit-part -text "+ property1: <Undefined>"] {
+        mouse-drag 103 8 button1 524288 -height 33 -width 153
+        mouse-release 103 8 button1 524288 -height 33 -width 153
+        with [get-edit-part -name property1] {
+            mouse-hover 98 6 -height 15 -width 143
+            mouse-press 98 6 button1 -height 15 -width 143
+            mouse-release 98 6 button1 524288 -height 15 -width 143
+            mouse-press 98 6 button1 -height 15 -width 143
+            mouse-release 98 6 button1 524288 -height 15 -width 143
+            mouse-press 98 6 button3 -height 15 -width 143
+            mouse-release 98 6 button3 2097152 -height 15 -width 143
+        }
+    }
+}
+get-view Properties | get-button "Edit the reference value" | click
+with [get-window Type] {
+    get-tree | select " model/ Type/ Speed"
+    get-button OK | click
+}
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name System | mouse-move 2 399 -height 617 -width 584
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name System] {
+    get-property childrenCount | equals 1 | verify-true
+    with [get-edit-part -name Car] {
+        get-edit-part -text Car | get-property text | equals Car | verify-true
+        get-edit-part -text "+ property1: Speed" | get-figure "1/0/0" | get-property text | equals "+ property1: Speed" 
+            | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

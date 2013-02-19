@@ -1,0 +1,68 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Context-Type: com.xored.q7.workspace.context
+Element-Name: Project with UML Model
+Element-Type: context
+Element-Version: 2.0
+Id: _lauxEHpsEeKeS_winlSmvQ
+Save-Time: 2/19/13 3:23 PM
+
+------=_contents/MyProject/model.uml-b6839559-53fb-3f89-987e-06286c2739d0
+Content-Type: q7/binary
+Entry-Name: contents/MyProject/model.uml
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnRdjksLgkAYRfdB/0G+vfMQIZEmV0Wh
+LoSEdlI62NC8UFP7900ugtrew7n3bpNZSW/kXS+MZkARAY/r2jRCtwzK88GPINmtV9unknFuGi69WYn4
+KwSEUrIhFFwsdR87yOA+DDbGeJomZFSLTNfi3vIaX/IT/hdc74/AaylszxfJsQCHiCCCyzyDZVk0DCqp
+HlVxtMOep/4cRmOa3fxXAZ6+Ks5AfW4Cdq/fUEsHCMK4rhipAAAA3gAAAFBLAQIUABQACAgIAAAAIQDC
+uK4YqQAAAN4AAAAIAAAAAAAAAAAAAAAAAAAAAAAuY29udGVudFBLBQYAAAAAAQABADYAAADfAAAAAAA=
+
+------=_contents/MyProject/model.uml-b6839559-53fb-3f89-987e-06286c2739d0--
+------=_contents/MyProject/model.di-b0e656fc-4c22-3efa-91fc-07d5da2a5596
+Content-Type: q7/binary
+Entry-Name: contents/MyProject/model.di
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnStUtFKwzAUfRf8hxCf13RTUErrJqI4
+3ECpoG+SNXdtIE1Kkq2bX+9tt9aNvvp4zz3n3ntOEk93pSJbsE4andBxEFICOjNC6jyhD+njfE6n95cX
+sZBRyl3xKbUwtVvq3JJdKaNeOWmUOEu7CPGEFt5XEWN1XQemzANjc/a1nPcUd06pr1vGJAzHSFukWQEl
+H0ntPNcZdCpxLoJMycpBq6x4tbcbx8LgNgiZw0uFpHg3IXHFc1hI59sKa77lUvGVgjdsHEGEoVw3wFyA
+9nItwZLCwjqhpRGgAm0892j06luP6x/zUvkneB3tbu62r4vVaP9OWTeeDefH7OyGuDlv2Ywl2cZa3JeC
+gsy3OTI269tsVh/iRkuzrJBKIBlz7lYdu38eOg7BfCO/ryCh+G4ffPVslABLe+YJ9wT7vxQOSQxWDKCY
+nXqIWW+9+XJs+OcQ/gVQSwcI4LB5X1ABAACyAgAAUEsBAhQAFAAICAgAAAAhAOCweV9QAQAAsgIAAAgA
+AAAAAAAAAAAAAAAAAAAAAC5jb250ZW50UEsFBgAAAAABAAEANgAAAIYBAAAAAA==
+------=_contents/MyProject/model.di-b0e656fc-4c22-3efa-91fc-07d5da2a5596--
+------=_contents/MyProject/model.notation-1d7a139d-aa21-3dc9-9db6-af4aa78ac9d2
+Content-Type: q7/binary
+Entry-Name: contents/MyProject/model.notation
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnR1kEtvwjAQhO+V+h8s95wYIg4oSsqh
+D7WCSEUtErfIhSVY9SOyHZL013cTSFVAPXo88+3sJrNGSXIA64TRKR2HI0pAb8xW6CKlq4/nYEpn97c3
+iTaee/TEj4IXlivSKBH/5qIuhyTtYtRTuve+jBmr6zo0qgiNLdg6ex0sA+vMBxspSge9t1A7ZivthQKG
+lcKIDZEBUSn5bxr/IjbB2IitsgXtm4ptSnM9rr/NS+mfYB40k+lhvvgM2iUlvi0hpW+8bG3lMPIguXOn
+PSnRXOHvuaaAu8qCAu1XWngMiwYkxUMRkjjfSnD92CP58nbvneGy1/qqFzviQPZz/vBwwTgzWxxI9hZ2
+KVXdI0T5LpfqK19e79ixEnZZBMUfUEsHCJK2eDYbAQAAAQIAAFBLAQIUABQACAgIAAAAIQCStng2GwEA
+AAECAAAIAAAAAAAAAAAAAAAAAAAAAAAuY29udGVudFBLBQYAAAAAAQABADYAAABRAQAAAAA=
+------=_contents/MyProject/model.notation-1d7a139d-aa21-3dc9-9db6-af4aa78ac9d2--
+------=_contents/MyProject/.project-db7607a0-e356-3aa3-a20e-b3efc9871b2e
+Content-Type: q7/binary
+Entry-Name: contents/MyProject/.project
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnSzsa/IzVEoSy0qzszPs1Uy1DNQUkjN
+S85PycxLt1UKDXHTtVCyt+Plsikoys9KTS5xSS1OLsosKAGqBopy2uQl5qba+VYGQGRt9MF8kERyfm5u
+al6JnY0+jAUShZpSDOboo/CSSjNzUoILUpMhcqjcvMSS0qJUqDYEB24EqrMAUEsHCNSdZ4d/AAAA1QAA
+AFBLAQIUABQACAgIAAAAIQDUnWeHfwAAANUAAAAIAAAAAAAAAAAAAAAAAAAAAAAuY29udGVudFBLBQYA
+AAAAAQABADYAAAC1AAAAAAA=
+------=_contents/MyProject/.project-db7607a0-e356-3aa3-a20e-b3efc9871b2e--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnSNkUFPwzAMhe9I/IfIdxLgMlS17IAm
+gaASaEJwm6rW67IlcdemS/n3uFtbLtPEzc778uyXxPPOGnHAutHkEriTtyDQ5VRoVybQ+vXNA8wfr6/i
+nKzsqMZC7mcyUL1rqizH6Gusnsh57LzorI4mu/vejge4JuLzBDbeV5FSIQRJtpRUl+o7fRmR8yOmW4p1
+ddTVfqYmXWLOZyBcZpl9r2mLuRdB+434TN9ESgUaELpIYGWytls8V80CX3G5CtqZpT18AMcTggNyAOeP
+DbfVyagZfNOfwRkGgJG1NjjqcuBBnddtv4Ys9GXdkc88v9xlqrVmAmI1LnpKof5i9PW//ozZX1BLBwiy
+DHgcAQEAAAcCAABQSwECFAAUAAgICAAAACEAsgx4HAEBAAAHAgAACAAAAAAAAAAAAAAAAAAAAAAALmNv
+bnRlbnRQSwUGAAAAAAEAAQA2AAAANwEAAAAA
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--
