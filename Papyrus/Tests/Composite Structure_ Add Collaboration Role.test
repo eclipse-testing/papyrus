@@ -1,0 +1,65 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Composite Structure: Add Collaboration Role
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _phYxcHs9EeKFfYXYuj08Qw
+Save-Time: 2/20/13 4:14 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use Collaboration Role tool on a palette;
+2. Drag into Collaboration1;
+3. Select Port1 as a connectable element;
+4. Verify that collaboration role has been created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model2" | double-click
+with [get-editor "model2.di"] {
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 1 51 -height 617 -width 584
+        mouse-move 284 124 -height 617 -width 584
+        mouse-move 579 204 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry Comment | mouse-move 75 0 -height 23 -width 125
+        get-palette-entry CollaborationUse | mouse-move 94 0 -height 23 -width 125
+        with [get-palette-entry CollaborationRole] {
+            mouse-move 95 18 button1 -height 23 -width 125
+            mouse-press 95 18 button1 -height 23 -width 125
+            mouse-release 95 18 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 139 362 -height 617 -width 584
+        with [get-edit-part -name Collaboration1 | get-edit-part -text structure] {
+            mouse-move 54 80 button1 -height 157 -width 114
+            mouse-press 54 80 button1 -height 157 -width 114
+            mouse-release 54 80 button1 524288 -height 157 -width 114
+        }
+    }
+}
+with [get-window "Collaboration role creation"] {
+    get-tree | select "<Class> Class1/<Port> Port1 : Port1"
+    get-button OK | click
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name Collaboration1 
+    | get-edit-part -text structure] {
+    with [get-figure "1/0"] {
+        get-property text | equals Port1 | verify-true
+        get-property childrenCount | equals 1 | verify-true
+    }
+    get-edit-part -name Port1 | get-property text | equals Port1 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

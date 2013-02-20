@@ -1,0 +1,79 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Make Same Size: Width
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _EMNUoHtGEeKFfYXYuj08Qw
+Save-Time: 2/20/13 5:14 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select Class2 and Function Behavior and use "Make same size/Width tool";
+2. Verify that Function Behavior width became the same as Class2.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model2" | double-click
+with [get-editor "model2.di" | get-diagram -index 1] {
+    with [get-edit-part -name Model] {
+        mouse-move 282 92 -height 617 -width 584
+        with [get-edit-part -name Class2 | get-edit-part -text Class2] {
+            mouse-move 81 3 button1 -height 15 -width 109
+            mouse-press 81 3 button1 -height 15 -width 109
+            mouse-release 81 3 button1 524288 -height 15 -width 109
+        }
+        mouse-move 400 193 -height 617 -width 584
+        with [get-edit-part -name Class2 | get-handle ResizeHandle -index 4] {
+            mouse-move 3 3 button1 -height 7 -width 7
+            mouse-press 3 3 button1 -height 7 -width 7
+        }
+        mouse-move 401 193 -mask 524288 -height 617 -width 584
+        mouse-drag 401 193 -mask 524288 -height 617 -width 584
+    }
+    mouse-drag 407 199 -mask 524288 -height 617 -width 584
+    with [get-edit-part -name Model] {
+        mouse-drag 523 297 button1 524288 -height 617 -width 584
+        mouse-release 523 297 button1 524288 -height 617 -width 584
+        mouse-move 8 199 -height 617 -width 584
+    }
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    get-edit-part -name Class2 | get-property width | equals 241 | verify-true
+    get-edit-part -name FunctionBehavior1 | get-figure "0/0" | get-property width | equals 106 | verify-true
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    with [get-edit-part -name FunctionBehavior1] {
+        mouse-move 52 8 button1 -height 73 -width 106
+        mouse-press 52 8 button1 -height 73 -width 106
+        mouse-release 52 8 button1 524288 -height 73 -width 106
+    }
+    with [get-edit-part -name Class2 | get-edit-part -text Class2] {
+        mouse-move 148 3 -height 15 -width 241
+        mouse-hover 148 3 -mask CTRL -height 15 -width 241
+        mouse-move 148 3 button1 CTRL -height 15 -width 241
+        mouse-press 148 3 button1 CTRL -height 15 -width 241
+        mouse-release 148 3 button1 786432 -height 15 -width 241
+    }
+    mouse-move 320 1 -height 617 -width 584
+}
+get-button "Make Same Size" | click -arrow
+get-menu Width | click
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    mouse-move 79 22 -height 617 -width 584
+    mouse-move 2 36 -height 617 -width 584
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    get-edit-part -name FunctionBehavior1 | get-figure "0/0" | get-property width | equals 241 | verify-true
+    get-edit-part -name Class2 | get-figure "0/0" | get-property width | equals 241 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

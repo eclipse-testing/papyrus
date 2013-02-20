@@ -1,0 +1,73 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Composite Structure: Add Collaboration
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _jOMKgHs8EeKFfYXYuj08Qw
+Save-Time: 2/20/13 4:12 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use Collaboration tool on a palette and add new collaboration;
+2. Set Collaboration name and press Return key;
+3.  Verify that collaboration was created.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model2" | double-click
+with [get-editor "model2.di"] {
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 5 34 -height 617 -width 584
+        get-edit-part -name Class1 | get-edit-part -text structure | mouse-move 108 21 -height 150 -width 117
+        mouse-move 583 247 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry TimeObservation | mouse-move 13 8 -height 23 -width 125
+        get-palette-entry DurationObservation | mouse-move 82 19 -height 23 -width 125
+        get-palette-entry InformationItem | mouse-move 123 21 -height 23 -width 125
+        get-palette-entry Activity | mouse-move 124 2 -height 23 -width 125
+        get-palette-entry TimeObservation | mouse-move 108 1 -height 23 -width 125
+        get-palette-entry Constraint | mouse-move 105 2 -height 23 -width 125
+        get-palette-entry Comment | mouse-move 102 0 -height 23 -width 125
+        get-palette-entry CollaborationUse | mouse-move 91 0 -height 23 -width 125
+        get-palette-entry CollaborationRole | mouse-move 84 0 -height 23 -width 125
+        with [get-palette-entry Collaboration] {
+            mouse-move 80 2 button1 -height 23 -width 125
+            mouse-press 80 2 button1 -height 23 -width 125
+            mouse-release 80 2 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 280 274 button1 -height 617 -width 584
+        mouse-press 280 274 button1 -height 617 -width 584
+        mouse-release 280 274 button1 524288 -height 617 -width 584
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name Collaboration2] {
+        get-edit-part -text Collaboration2 | activate-direct-edit
+        get-handle ResizeHandle -index 6 | mouse-hover 3 4 -height 7 -width 7
+    }
+    with [get-editbox] {
+        set-text C2
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name Model | mouse-move 6 232 -height 617 -width 584
+    }
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    get-property childrenCount | equals 5 | verify-true
+    get-edit-part -name C2 | get-figure 0 | get-property text | equals "«Collaboration»C2  structure" | verify-true
+}
+get-view Properties | get-editbox -after [get-label Name] | get-property text | equals C2 | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

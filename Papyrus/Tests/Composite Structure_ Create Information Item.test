@@ -1,0 +1,69 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Composite Structure: Create Information Item
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _1nTvgHs_EeKFfYXYuj08Qw
+Save-Time: 2/20/13 4:30 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select InformationItem tool on a palette;
+2. Drag and click on a diagram;
+3. Change Information Item name and click Return key;
+4. Verify that information item has been added. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model2" | double-click
+with [get-editor "model2.di"] {
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 582 507 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry Substitution | mouse-move 41 0 -height 23 -width 125
+        get-palette-entry Realization | mouse-move 70 9 -height 23 -width 125
+        get-palette-entry Generalization | mouse-move 97 2 -height 23 -width 125
+        get-palette-entry RoleBinding | mouse-move 107 2 -height 23 -width 125
+        get-palette-entry Connector | mouse-move 111 0 -height 23 -width 125
+        get-palette-entry Link | mouse-move 114 0 -height 23 -width 125
+        get-palette-entry Activity | mouse-move 118 0 -height 23 -width 125
+        get-palette-entry Parameter | mouse-move 124 0 -height 23 -width 125
+        with [get-palette-entry InformationItem] {
+            mouse-move 86 12 button1 -height 23 -width 125
+            mouse-press 86 12 button1 -height 23 -width 125
+            mouse-release 86 12 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 287 281 button1 -height 617 -width 584
+        mouse-press 287 281 button1 -height 617 -width 584
+        mouse-release 287 281 button1 524288 -height 617 -width 584
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name InformationItem1] {
+        get-edit-part -name InformationItem1 | activate-direct-edit
+        get-handle ResizeHandle -index 6 | mouse-hover 4 3 -height 7 -width 7
+    }
+    with [get-editbox] {
+        set-text II
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name Model | mouse-move 9 201 -height 617 -width 584
+    }
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    get-property childrenCount | equals 5 | verify-true
+    get-edit-part -name II | get-figure 0 | get-property text | equals "«Information»II" | verify-true
+}
+get-view Properties | get-editbox -after [get-label Name] | get-property text | equals II | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

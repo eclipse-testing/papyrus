@@ -1,0 +1,132 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_B9tgAHqGEeKeS_winlSmvQ,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Show/Hide Content
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _Mc3RUHtIEeKFfYXYuj08Qw
+Save-Time: 2/20/13 5:33 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST sTEPS
+
+1. Select HelloWorld class and choose Show/Hide Contents tool;
+2. Deselect Operation content and  and verify that main method is hidden
+3. Press F4 and select Operation content; 
+4. Verify that main method is shown. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "HelloWorld/mdl/model" | double-click
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name model] {
+    mouse-move 9 145 -height 617 -width 584
+    with [get-edit-part -name "com.cea.example" | get-edit-part 
+        -className PackagePackageableElementCompartmentEditPart] {
+        mouse-move 47 17 -height 208 -width 529
+        with [get-edit-part -name HelloWorld] {
+            get-property childrenCount | equals 4 | verify-true
+            with [get-edit-part -text "+ main( + in: String{unique})"] {
+                get-property text | equals "+ main( + in: String{unique})" | verify-true
+                get-property className 
+                    | equals "org.eclipse.papyrus.uml.diagram.clazz.edit.parts.ClassOperationCompartmentEditPartCN" 
+                    | verify-true
+            }
+        }
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name model] {
+    with [get-edit-part -name "com.cea.example" | get-edit-part -className PackagePackageableElementCompartmentEditPart 
+        | get-edit-part -name HelloWorld | get-edit-part -text HelloWorld] {
+        mouse-move 152 3 button1 -height 15 -width 241
+        mouse-press 152 3 button1 -height 15 -width 241
+        mouse-release 152 3 button1 524288 -height 15 -width 241
+    }
+    mouse-move 150 3 -height 617 -width 584
+}
+get-button "Show/Hide Actions" | click -arrow
+get-menu "Show\\/Hide Contents" | click
+with [get-window "Select the elements to show"] {
+    get-tree | select "<Class> HelloWorld" 
+        | get-item "<Class> HelloWorld/OperationCompartment/<Operation> main \\(args : String\\)" | uncheck
+    get-button OK | click
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name model] {
+    mouse-move 330 540 -height 617 -width 584
+    mouse-hover 330 540 -height 617 -width 584
+    mouse-move 11 396 -height 617 -width 584
+}
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name model | get-edit-part -name "com.cea.example" 
+    | get-edit-part -className PackagePackageableElementCompartmentEditPart | get-edit-part -name HelloWorld 
+    | get-edit-part -className ClassOperationCompartmentEditPartCN | get-property text | equals "" | verify-true
+with [get-editor "model.di"] {
+    with [get-diagram -index 1 | get-edit-part -name model | get-edit-part -name "com.cea.example" | get-edit-part 
+        -className PackagePackageableElementCompartmentEditPart] {
+        mouse-move 315 46 -height 208 -width 529
+        with [get-edit-part -name HelloWorld | get-edit-part -text HelloWorld] {
+            mouse-move 207 7 button1 -height 15 -width 241
+            mouse-press 207 7 button1 -height 15 -width 241
+            mouse-release 207 7 button1 524288 -height 15 -width 241
+            mouse-hover 207 7 -height 15 -width 241
+            mouse-press 207 7 button1 -height 15 -width 241
+            mouse-release 207 7 button1 524288 -height 15 -width 241
+            mouse-hover 207 7 -height 15 -width 241
+            activate-direct-edit
+        }
+    }
+    get-editbox | click-text 11
+    with [get-diagram -index 1] {
+        with [get-edit-part -name model | get-edit-part -name "com.cea.example" | get-edit-part 
+            -className PackagePackageableElementCompartmentEditPart | get-edit-part -name HelloWorld] {
+            mouse-move 234 7 button1 -height 157 -width 241
+            mouse-press 234 7 button1 -height 157 -width 241
+        }
+        commit-direct-edit
+        with [get-edit-part -name model | get-edit-part -name "com.cea.example" | get-edit-part 
+            -className PackagePackageableElementCompartmentEditPart | get-edit-part -name HelloWorld] {
+            mouse-release 234 7 button1 524288 -height 157 -width 241
+            mouse-hover 234 7 -height 157 -width 241
+        }
+      
+    }
+}
+
+
+with [get-editor "model.di" | get-diagram -index 1] {
+    with [get-edit-part -name model] {
+        mouse-move 429 95 button1 -height 617 -width 584
+        mouse-press 429 95 button1 -height 617 -width 584
+    }
+    get-figure "1/18" | mouse-drag 485 30 -mask 524288 -height 40 -width 640
+    mouse-drag 435 101 -mask 524288 -height 617 -width 584
+    with [get-edit-part -name model] {
+        mouse-drag 485 95 button1 524288 -height 617 -width 640
+        mouse-release 485 95 button1 524288 -height 617 -width 640
+        with [get-edit-part -name "com.cea.example" | get-edit-part 
+            -className PackagePackageableElementCompartmentEditPart | get-edit-part -name HelloWorld | get-edit-part 
+            -text HelloWorld] {
+            mouse-move 234 2 button1 -height 15 -width 241
+            mouse-press 234 2 button1 -height 15 -width 241
+            mouse-release 234 2 button1 524288 -height 15 -width 241
+            mouse-hover 234 2 -height 15 -width 241
+        }
+    }
+    key-type F4
+}
+with [get-window "Select the elements to show"] {
+    get-tree | select "<Class> HelloWorld" 
+        | get-item "<Class> HelloWorld/OperationCompartment/<Operation> main \\(args : String\\)" | check
+    get-button OK | click
+}
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name model | get-edit-part -name "com.cea.example" 
+    | get-edit-part -className PackagePackageableElementCompartmentEditPart | get-edit-part -name HelloWorld 
+    | get-edit-part -text "+ main( + in: String{unique})" | get-property text | equals "+ main( + in: String{unique})" 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

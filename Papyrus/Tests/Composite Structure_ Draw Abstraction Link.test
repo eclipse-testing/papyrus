@@ -1,0 +1,96 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Composite Structure: Draw Abstraction Link
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _AzhzgHtEEeKFfYXYuj08Qw
+Save-Time: 2/20/13 4:59 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use Abstraction tool on a palette and draw from Class1 to Class2;
+2. Verify that abstraction link is created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model2" | double-click
+with [get-editor "model2.di"] {
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 279 161 -height 617 -width 584
+        mouse-move 578 228 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry Constraint | mouse-move 9 14 -height 23 -width 125
+        get-palette-entry TimeObservation | mouse-move 56 19 -height 23 -width 125
+        get-palette-entry DurationObservation | mouse-move 86 22 -height 23 -width 125
+        get-palette-entry InformationItem | mouse-move 101 22 -height 23 -width 125
+        get-palette-entry Parameter | mouse-move 107 22 -height 23 -width 125
+        get-palette-entry Activity | mouse-move 109 7 -height 23 -width 125
+        get-palette-entry Link | mouse-move 109 22 -height 23 -width 125
+        get-palette-entry Connector | mouse-move 106 20 -height 23 -width 125
+        get-palette-entry RoleBinding | mouse-move 101 21 -height 23 -width 125
+        get-palette-entry Generalization | mouse-move 99 22 -height 23 -width 125
+        get-palette-entry Realization | mouse-move 93 22 -height 23 -width 125
+        get-palette-entry Substitution | mouse-move 83 22 -height 23 -width 125
+        with [get-palette-entry Abstraction] {
+            mouse-move 80 4 button1 -height 23 -width 125
+            mouse-press 80 4 button1 -height 23 -width 125
+            mouse-release 80 4 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model] {
+            mouse-move 140 126 -height 617 -width 584
+            with [get-edit-part -name Class1 | get-edit-part -text structure] {
+                mouse-move 82 36 button1 -height 150 -width 117
+                mouse-press 82 36 button1 -height 150 -width 117
+                mouse-move 91 35 -mask 524288 -height 150 -width 117
+                mouse-drag 91 35 -mask 524288 -height 150 -width 117
+            }
+        }
+        mouse-drag 109 84 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model | get-edit-part -name Class2 | get-edit-part -text structure] {
+            mouse-drag 30 34 button1 524288 -height 154 -width 109
+            mouse-release 30 34 button1 524288 -height 154 -width 109
+            mouse-press 30 34 button1 -height 154 -width 109
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        with [get-edit-part -name Class2] {
+            get-edit-part -text structure | mouse-release 30 34 button1 524288 -height 154 -width 109
+            get-target-connection 0 | get-edit-part -text Abstraction1 | activate-direct-edit
+        }
+        mouse-move 136 144 -height 617 -width 584
+        with [get-edit-part -name Class1 | get-edit-part -text structure] {
+            mouse-move 44 108 -height 150 -width 117
+            mouse-hover 44 108 -mask SHIFT -height 150 -width 117
+        }
+    }
+    with [get-editbox] {
+        set-text A1
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name Model | mouse-move 5 148 -height 617 -width 584
+    }
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name Class2 
+    | get-target-connection 0] {
+    get-property text | equals "A1«abstraction»" | verify-true
+    get-property className | equals "org.eclipse.papyrus.uml.diagram.composite.edit.parts.AbstractionEditPart" 
+        | verify-true
+    get-property "source.element.qualifiedName" | equals "Model::Class1" | verify-true
+    get-property "target.element.qualifiedName" | equals "Model::Class2" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

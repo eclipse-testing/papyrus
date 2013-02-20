@@ -1,0 +1,91 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Composite structure: Add FB
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _vsH4kHtBEeKFfYXYuj08Qw
+Save-Time: 2/20/13 4:43 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use Function Behavior tool an a palette;
+2. Click on a diagram;
+3. Set FB name;
+4. Verify that Function Behavior is added. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model2" | double-click
+with [get-editor "model2.di"] {
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 1 50 -height 617 -width 584
+        mouse-move 283 171 -height 617 -width 584
+        mouse-move 583 307 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry Parameter | mouse-move 37 22 -height 23 -width 125
+        get-palette-entry Activity | mouse-move 38 0 -height 23 -width 125
+        get-palette-entry Link | mouse-move 93 21 -height 23 -width 125
+        get-palette-entry Connector | mouse-move 106 22 -height 23 -width 125
+        get-palette-entry RoleBinding | mouse-move 117 22 -height 23 -width 125
+        get-palette-entry Parameter | mouse-move 94 2 -height 23 -width 125
+        get-palette-entry InformationItem | mouse-move 91 3 -height 23 -width 125
+        get-palette-entry DurationObservation | mouse-move 88 0 -height 23 -width 125
+        get-palette-entry TimeObservation | mouse-move 84 1 -height 23 -width 125
+        get-palette-entry Constraint | mouse-move 81 0 -height 23 -width 125
+        get-palette-entry Comment | mouse-move 80 2 -height 23 -width 125
+        get-palette-entry CollaborationUse | mouse-move 79 0 -height 23 -width 125
+        with [get-palette-entry Nodes] {
+            mouse-move 62 304 button1 -height 308 -width 125
+            mouse-press 62 304 button1 -height 308 -width 125
+        }
+        get-figure "0/1/1/0/0/17/0" | mouse-press 62 21 button1 -height 23 -width 125
+        get-palette-entry OpaqueBehavior | mouse-release 62 21 button1 524288 -height 23 -width 125
+        get-figure "0/1/1/0/0/17/0" | mouse-release 62 21 button1 524288 -height 23 -width 125
+        with [get-palette-entry OpaqueBehavior] {
+            mouse-hover 62 21 -height 23 -width 125
+            mouse-move 61 0 -height 23 -width 125
+        }
+        with [get-palette-entry FunctionBehavior] {
+            mouse-move 59 15 button1 -height 23 -width 125
+            mouse-press 59 15 button1 -height 23 -width 125
+            mouse-release 59 15 button1 524288 -height 23 -width 125
+            mouse-move 18 1 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 292 270 button1 -height 617 -width 584
+        mouse-press 292 270 button1 -height 617 -width 584
+        mouse-release 292 270 button1 524288 -height 617 -width 584
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name FunctionBehavior2] {
+        get-handle ResizeHandle -index 6 | mouse-hover 4 4 -height 7 -width 7
+        get-edit-part -text FunctionBehavior2 | activate-direct-edit
+    }
+    with [get-editbox] {
+        set-text FB2
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        with [get-edit-part -name Model] {
+            mouse-move 145 141 -height 617 -width 584
+            get-edit-part -name Class1 | get-edit-part -text structure | mouse-move 114 89 -height 150 -width 117
+        }
+    }
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    get-property childrenCount | equals 5 | verify-true
+    get-edit-part -name FB2 | get-figure "0/0" | get-property childrenCount | equals 3 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

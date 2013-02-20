@@ -1,0 +1,46 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Composite Structure: Delete Class
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _VfEOcHtEEeKFfYXYuj08Qw
+Save-Time: 2/20/13 5:02 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select Class1 on a diagram and press DEL key;
+2. Verify that Class1 was deleted only from a diagram - not from model. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model2" | double-click
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    mouse-move 166 38 -height 617 -width 584
+    get-edit-part -name Class1 | get-edit-part -text Class1 | mouse-move 45 4 -height 15 -width 117
+}
+get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model | get-property childrenCount | equals 4 
+    | verify-true
+with [get-editor "model2.di" | get-diagram -index 1] {
+    with [get-edit-part -name Model | get-edit-part -name Class1 | get-edit-part -text Class1] {
+        mouse-move 93 2 button1 -height 15 -width 117
+        mouse-press 93 2 button1 -height 15 -width 117
+        mouse-release 93 2 button1 524288 -height 15 -width 117
+        mouse-hover 93 2 -height 15 -width 117
+    }
+    key-type Del
+    get-edit-part -name Model | mouse-move 80 31 -height 617 -width 584
+}
+get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model | get-property childrenCount | equals 3 
+    | verify-true
+get-view "Model Explorer" | get-tree | get-item " Model/ Class1" | get-property caption | equals Class1 | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

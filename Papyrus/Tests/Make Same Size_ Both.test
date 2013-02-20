@@ -1,0 +1,100 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Make Same Size: Both
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _S2mFcHtGEeKFfYXYuj08Qw
+Save-Time: 2/20/13 5:15 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select Class2 and Function Behavior and use "Make same size/Both tool";
+2. Verify that Function Behavior width and height became the same as Class2.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model2" | double-click
+with [get-editor "model2.di" | get-diagram -index 1] {
+    with [get-edit-part -name Model] {
+        with [get-edit-part -name Class2] {
+            mouse-move 87 2 button1 -height 169 -width 109
+            mouse-press 87 2 button1 -height 169 -width 109
+            mouse-release 87 2 button1 524288 -height 169 -width 109
+        }
+        mouse-move 400 189 -height 617 -width 584
+        with [get-edit-part -name Class2 | get-handle ResizeHandle -index 4] {
+            mouse-hover 3 6 -height 7 -width 7
+            mouse-move 3 6 button1 -height 7 -width 7
+            mouse-press 3 6 button1 -height 7 -width 7
+        }
+        mouse-move 396 196 -mask 524288 -height 617 -width 584
+        mouse-drag 396 196 -mask 524288 -height 617 -width 584
+    }
+    mouse-drag 402 202 -mask 524288 -height 617 -width 584
+    with [get-edit-part -name Model] {
+        mouse-drag 433 359 button1 524288 -height 617 -width 584
+        mouse-release 433 359 button1 524288 -height 617 -width 584
+        with [get-edit-part -name Class2 | get-handle ResizeHandle -index 4] {
+            mouse-move 5 4 button1 -height 7 -width 7
+            mouse-press 5 4 button1 -height 7 -width 7
+            mouse-drag 6 4 -mask 524288 -height 7 -width 7
+        }
+    }
+    mouse-drag 441 367 -mask 524288 -height 617 -width 584
+    with [get-edit-part -name Model] {
+        mouse-drag 492 357 button1 524288 -height 617 -width 584
+        mouse-release 492 357 button1 524288 -height 617 -width 584
+        get-edit-part -name Class2 | get-handle ResizeHandle -index 4 | mouse-hover 0 2 -height 7 -width 7
+        mouse-move 142 286 -height 617 -width 584
+        get-edit-part -name Collaboration1 | mouse-move 103 15 -height 187 -width 114
+    }
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    with [get-edit-part -name Class2 | get-figure "0/0"] {
+        get-property width | equals 205 | verify-true
+        get-property height | equals 337 | verify-true
+    }
+    with [get-edit-part -name FunctionBehavior1 | get-figure "0/0"] {
+        get-property width | equals 106 | verify-true
+        get-property height | equals 73 | verify-true
+    }
+}
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    with [get-edit-part -name FunctionBehavior1] {
+        mouse-move 28 8 -height 73 -width 106
+        mouse-move 82 12 button1 -height 73 -width 106
+        mouse-press 82 12 button1 -height 73 -width 106
+        mouse-release 82 12 button1 524288 -height 73 -width 106
+    }
+    with [get-edit-part -name Class2 | get-edit-part -text Class2] {
+        mouse-move 120 8 -height 15 -width 205
+        mouse-hover 120 8 -height 15 -width 205
+        mouse-move 120 8 button1 CTRL -height 15 -width 205
+        mouse-press 120 8 button1 CTRL -height 15 -width 205
+        mouse-release 120 8 button1 786432 -height 15 -width 205
+    }
+    mouse-move 347 0 -height 617 -width 584
+}
+get-button "Make Same Size" | click -arrow
+get-menu Both | click
+with [get-editor "model2.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    with [get-edit-part -name FunctionBehavior1 | get-figure "0/0"] {
+        get-property width | equals 205 | verify-true
+        get-property height | equals 337 | verify-true
+    }
+    with [get-edit-part -name Class2 | get-figure "0/0"] {
+        get-property width | equals 205 | verify-true
+        get-property height | equals 337 | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
