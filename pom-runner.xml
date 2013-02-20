@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>papyrus.tests</artifactId>
+  <groupId>com.eclipse-testing</groupId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>q7test</packaging>
+
+  <parent>
+	<groupId>com.eclipse-testing</groupId>
+	<artifactId>papyrus.tests.parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+    <relativePath>pom-parent.xml</relativePath>
+  </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.xored.q7</groupId>
+        <artifactId>q7-maven-plugin</artifactId>
+        <version>${q7-version}</version>
+        <extensions>true</extensions>
+        <configuration>
+		  <aut>
+            <groupId>eclipse</groupId>
+            <artifactId>sdk</artifactId>
+            <version>4.2.1</version>
+
+			<injections>
+			  <injection>
+                <site>http://download.eclipse.org/modeling/mdt/papyrus/updates/nightly/juno/main/</site>
+			  </injection>
+			  <injection>
+				<site>http://download.xored.com/mirrors/juno</site>
+				<features>
+				  <feature>org.eclipse.emf.sdk.feature.group</feature>
+				  <feature>org.eclipse.emf.feature.group</feature>
+				  <feature>org.eclipse.emf.sdk.feature.group</feature>
+				  <feature>org.eclipse.emf.query.sdk.feature.group</feature>
+				  <feature>org.eclipse.emf.query.feature.group</feature>
+				  <feature>org.eclipse.emf.transaction.sdk.feature.group</feature>
+				  <feature>org.eclipse.emf.transaction.feature.group</feature>
+				  <feature>org.eclipse.emf.validation.sdk.feature.group</feature>
+				  <feature>org.eclipse.emf.validation.feature.group</feature>
+				  <feature>org.eclipse.emf.ecoretools.sdk.feature.group</feature>
+
+				  <feature>org.eclipse.uml2.feature.group</feature>
+				  <feature>org.eclipse.uml2.doc.feature.group</feature>
+				  <feature>org.eclipse.uml2.examples.feature.group</feature>
+
+				  <feature>org.eclipse.draw2d.feature.group</feature>
+				  <feature>org.eclipse.gef.feature.group</feature>
+				  <feature>org.eclipse.gef.examples.feature.group</feature>
+
+				  <feature>org.eclipse.gmf.feature.group</feature>
+				  <feature>org.eclipse.gmf.sdk.feature.group</feature>
+				  <feature>org.eclipse.gmf.examples.runtime.feature.group</feature>
+				  <feature>org.eclipse.gmf.runtime.notation.feature.group</feature>
+				  <feature>org.eclipse.gmf.tooling.feature.group</feature>
+
+				  <feature>org.eclipse.xtext.sdk.feature.group</feature>
+				  <feature>org.eclipse.ocl.all.sdk.feature.group</feature>
+
+				  <feature>org.apache.commons.lang</feature>
+
+				  <feature>org.eclipse.emf.facet.common.feature.feature.group</feature>
+				  <feature>org.eclipse.emf.facet.infra.feature.feature.group</feature>
+				  <feature>org.eclipse.emf.facet.sdk.feature.feature.group</feature>
+				  <feature>org.eclipse.emf.facet.util.feature.feature.group</feature>
+				  <feature>org.eclipse.emf.facet.widgets.feature.feature.group</feature>
+				  <!-- <feature>org.eclipse.emf.facet.all.feature.feature.group</feature> -->
+				  <!--
+					  <feature>org.eclipse.emf.facet.widgets.feature.feature.group</feature>
+					  <feature>org.eclipse.emf.facet.util.feature.feature.group</feature>
+				  -->
+				  <!--
+					  <feature>org.eclipse.emf.facet.infra.common.core</feature>
+					  <feature>org.eclipse.emf.facet.infra.facet</feature>
+					  <feature>org.eclipse.emf.facet.infra.facet.core</feature>
+					  <feature>org.eclipse.emf.facet.infra.query.core</feature>
+				  -->
+				  <!--
+					  <feature>org.eclipse.emf.facet.widgets.nattable</feature>
+					  <feature>org.eclipse.emf.facet.widgets.nattable.instance</feature>
+					  <feature>org.eclipse.emf.facet.widgets.nattable.tableconfiguration</feature>
+				  -->
+				  <!--
+					  <feature>org.eclipse.emf.facet.widgets.nattable.workbench</feature>
+					  <feature>org.eclipse.emf.facet.widgets.nattable</feature>
+				  -->
+
+				  <feature>org.eclipse.emf.examples.library.editor</feature>
+
+				  <feature>org.eclipse.wst.xml.core</feature>
+
+				  <feature>org.eclipse.gmt.modisco.xml</feature>
+				  <feature>org.eclipse.gmt.modisco.xml.discoverer</feature>
+                  <feature>org.eclipse.modisco.infrastructure</feature>
+
+				  <feature>org.eclipse.m2m.qvt.oml</feature>
+				  <feature>org.eclipse.m2m.qvt.oml.project</feature>
+				  <feature>org.eclipse.m2m.qvt.oml.common</feature>
+				  <feature>org.eclipse.m2m.qvt.oml.runtime</feature>
+
+				  <feature>org.eclipse.ocl.examples.pivot</feature>
+				  <feature>org.eclipse.ocl.examples.xtext.base</feature>
+				  <feature>org.eclipse.ocl.examples.xtext.console</feature>
+				  <feature>org.eclipse.ocl.examples.xtext.essentialocl.ui</feature>
+
+				  <feature>org.eclipse.xtend.lib</feature>
+				  <feature>org.eclipse.xtend.typesystem.emf</feature>
+				  <feature>org.eclipse.xtend</feature>
+
+				  <feature>org.eclipse.xpand</feature>
+
+				  <feature>net.sourceforge.nattable.core</feature>
+				  <feature>net.sourceforge.nattable.core</feature>
+				  <feature>org.eclipse.emf.facet.widgets.table.ui.nattable</feature>
+
+                  <!--
+					  <feature></feature>
+					  <feature></feature>
+					  <feature></feature>
+					  <feature></feature>
+				  -->
+				</features>
+			  </injection>
+			</injections>
+		  </aut>
+
+          <testOptions>
+            <execTimeout>7200</execTimeout>
+          </testOptions>
+          <q7>
+            <version>${q7-version}</version>
+          </q7>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+</project>
