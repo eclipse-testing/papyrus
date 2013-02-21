@@ -1,0 +1,95 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _L1lMoHv9EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Block Definition Diagram: add Parameter
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _UDe60HwAEeKFfYXYuj08Qw
+Save-Time: 2/21/13 3:56 PM
+Tags: Block Definition Diagram
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select Parameter tool on a palette and drag into properties section of a Mainsystem block;
+2. set Parameter name;
+3. Verify tha parameter has been succsessfully added. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name SysMLmodel | mouse-move 583 130 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry Composition | mouse-move 9 20 -height 23 -width 125
+        get-palette-entry DirectedComposition | mouse-move 51 16 -height 23 -width 125
+        get-palette-entry Package | mouse-move 73 22 -height 23 -width 125
+        get-palette-entry Actor | mouse-move 69 22 -height 23 -width 125
+        get-palette-entry Block | mouse-move 65 22 -height 23 -width 125
+        get-palette-entry Signal | mouse-move 64 16 -height 23 -width 125
+        get-palette-entry Port | mouse-move 66 22 -height 23 -width 125
+        with [get-palette-entry ModelElements] {
+            mouse-move 76 114 button1 -height 117 -width 125
+            mouse-press 76 114 button1 -height 117 -width 125
+        }
+        get-figure "0/2/1/0/0/5/0" | mouse-press 76 21 button1 -height 23 -width 125
+        get-palette-entry ModelElements | mouse-release 76 114 button1 524288 -height 117 -width 125
+        get-figure "0/2/1/0/0/5/0" | mouse-release 76 21 button1 524288 -height 23 -width 125
+        with [get-palette-entry ModelElements] {
+            mouse-hover 76 114 -height 117 -width 125
+            mouse-press 76 114 button1 -height 117 -width 125
+        }
+        get-figure "0/2/1/0/0/7/0" | mouse-press 76 21 button1 -height 23 -width 125
+        get-palette-entry ModelElements | mouse-release 76 114 button1 524288 -height 117 -width 125
+        get-figure "0/2/1/0/0/7/0" | mouse-release 76 21 button1 524288 -height 23 -width 125
+        get-palette-entry FlowPort | mouse-move 90 19 -height 23 -width 125
+        get-palette-entry FlowSpecification | mouse-move 91 20 -height 23 -width 125
+        get-palette-entry FlowProperty | mouse-move 92 16 -height 23 -width 125
+        get-palette-entry DataType | mouse-move 91 21 -height 23 -width 125
+        get-palette-entry ValueType | mouse-move 90 20 -height 23 -width 125
+        get-palette-entry PrimitiveType | mouse-move 88 20 -height 23 -width 125
+        get-palette-entry Enumeration | mouse-move 85 15 -height 23 -width 125
+        get-palette-entry ConstraintBlock | mouse-move 73 22 -height 23 -width 125
+        get-palette-entry ConstraintProperty | mouse-move 68 22 -height 23 -width 125
+        with [get-palette-entry Parameter] {
+            mouse-move 67 1 button1 -height 23 -width 125
+            mouse-press 67 1 button1 -height 23 -width 125
+            mouse-release 67 1 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name SysMLmodel] {
+        mouse-move 476 380 -height 617 -width 584
+        with [get-edit-part -name MainSystem | get-edit-part -text properties] {
+            mouse-move 64 24 button1 -height 40 -width 100
+            mouse-press 64 24 button1 -height 40 -width 100
+            mouse-release 64 24 button1 524288 -height 40 -width 100
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name SysMLmodel | get-edit-part -name MainSystem] {
+        get-edit-part -text "propertiesproperty1: <Undefined>" | get-edit-part -name property1 | mouse-hover 59 9 
+            -height 15 -width 90
+        get-edit-part -text propertiesproperty1 | get-edit-part -name property1 | activate-direct-edit
+    }
+    with [get-editbox] {
+        set-text p1
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name SysMLmodel | mouse-move 9 183 -height 617 -width 584
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name SysMLmodel | get-edit-part -name MainSystem 
+    | get-edit-part -text "propertiesp1: <Undefined>"] {
+    get-property childrenCount | equals 1 | verify-true
+    get-figure "1/0/0" | get-property text | equals "p1: <Undefined>" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

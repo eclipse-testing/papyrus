@@ -1,0 +1,45 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _G3lhoHT3EeKCqKlV8_wmTg,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Create EMF Tree
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _vCKc4HwCEeKFfYXYuj08Qw
+Save-Time: 2/21/13 3:58 PM
+Tags: EMF Tree
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Open a model;
+2. Click "Create a new EMF tree" button;
+3. Verify that EMF tree is created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+get-button "Create a new EMF Tree" | click
+with [get-editor "model.di"] {
+    get-tab-folder | get-property activePage | equals EmfTree | verify-true
+    with [get-tree] {
+        get-item "platform:\\/resource\\/MyProject\\/model.notation" | get-property caption 
+            | equals "platform:/resource/MyProject/model.notation" | verify-true
+        get-item "platform:\\/resource\\/MyProject\\/model.di" | get-property caption 
+            | equals "platform:/resource/MyProject/model.di" | verify-true
+        get-item "platform:\\/resource\\/MyProject\\/model.uml" | get-property caption 
+            | equals "platform:/resource/MyProject/model.uml" | verify-true
+        get-item "pathmap:\\/\\/SysML_PROFILES\\/SysML.profile.uml" | get-property caption 
+            | equals "pathmap://SysML_PROFILES/SysML.profile.uml" | verify-true
+        get-item "pathmap:\\/\\/UML_PROFILES\\/Ecore.profile.uml" | get-property caption 
+            | equals "pathmap://UML_PROFILES/Ecore.profile.uml" | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,0 +1,44 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _G3lhoHT3EeKCqKlV8_wmTg,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Select All Connections 
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _pFVcoHwDEeKFfYXYuj08Qw
+Save-Time: 2/21/13 4:02 PM
+Tags: Diagram Tools/Select
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Open UseCase Diaagram;
+2. Use Select All Connections tool;
+3. Verify that all conecctions are selected.  
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 116 614 -height 720 -width 768
+    get-tab-folder | get-tab-item UseCaseDiagram | click
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 49 295 -height 720 -width 768
+        mouse-move 25 210 -height 720 -width 768
+    }
+}
+get-button "Select Actions" | click -arrow
+get-menu "Select All Connectors" | click
+get-view Properties 
+    | get-label "A_service atms_technician, A_update customer database_bank computer, A_deposit money_bank teller, A_withdraw money_bank teller, , , A_deposit cash at atm_customer, A_customer_apply for loan, , Generalization, A_process a loan_loan officer, Generalization" 
+    | get-property caption 
+    | equals "A_service atms_technician, A_update customer database_bank computer, A_deposit money_bank teller, A_withdraw money_bank teller, , , A_deposit cash at atm_customer, A_customer_apply for loan, , Generalization, A_process a loan_loan officer, Generalization" 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

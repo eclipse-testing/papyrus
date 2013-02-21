@@ -1,0 +1,36 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _G3lhoHT3EeKCqKlV8_wmTg,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Select All Shapes
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _4J3y0HwDEeKFfYXYuj08Qw
+Save-Time: 2/21/13 4:02 PM
+Tags: Diagram Tools/Select
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Open UseCase Diaagram;
+2. Use Select All Shapes tool;
+3. Verify that all shapes are selected.  
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+get-button "Select Actions" | click -arrow
+get-menu "Select All Shapes" | click
+get-view Properties 
+    | get-label "Service ATMs, Deposit Money, Technician, Customer, Deposit Cash at ATM, Withdraw Money, Withdraw Cash from ATM, Employees, Bank Teller, Update Customer Database, Process a Loan, Loan Officer, Apply for Loan, Bank Computer, UseCase" 
+    | get-property caption 
+    | equals "Service ATMs, Deposit Money, Technician, Customer, Deposit Cash at ATM, Withdraw Money, Withdraw Cash from ATM, Employees, Bank Teller, Update Customer Database, Process a Loan, Loan Officer, Apply for Loan, Bank Computer, UseCase" 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
