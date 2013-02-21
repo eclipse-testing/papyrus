@@ -1,0 +1,55 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _L1lMoHv9EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Copy Paste Block
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _qyhoIHwMEeKFfYXYuj08Qw
+Save-Time: 2/21/13 4:56 PM
+Tags: Refactoring
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select a block and press Ctrl+C;
+2. Press Ctrl+V;
+3. Verify that a block copy appeared. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name SysMLmodel] {
+            mouse-move 581 102 -height 617 -width 584
+            mouse-move 460 113 -height 617 -width 584
+            with [get-edit-part -name PortType] {
+                mouse-move 93 9 button1 -height 134 -width 100
+                mouse-press 93 9 button1 -height 134 -width 100
+                mouse-release 93 9 button1 524288 -height 134 -width 100
+                mouse-hover 93 9 -height 134 -width 100
+            }
+        }
+        key-type "M1+c"
+        with [get-edit-part -name SysMLmodel] {
+            get-edit-part -name PortType | mouse-move 94 17 -height 134 -width 100
+            mouse-move 295 379 button1 -height 617 -width 584
+            mouse-press 295 379 button1 -height 617 -width 584
+            mouse-release 295 379 button1 524288 -height 617 -width 584
+            mouse-move 290 381 -height 617 -width 584
+        }
+        key-type "M1+v"
+    }
+    get-diagram -index 1 | get-edit-part -name SysMLmodel | mouse-move 2 52 -height 617 -width 584
+}
+get-editor "model.di" | get-diagram -index 1 | get-edit-part -name SysMLmodel | get-property childrenCount | equals 6 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
