@@ -2,12 +2,12 @@
 Format-Version: 1.0
 Q7-vendor: www.xored.com/q7
 Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
-Element-Name: Composite structure: Add FB
+Element-Name: Composite Structure: add FunstionBehavior
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _vsH4kHtBEeKFfYXYuj08Qw
-Save-Time: 2/20/13 4:43 PM
+Save-Time: 2/21/13 2:46 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa

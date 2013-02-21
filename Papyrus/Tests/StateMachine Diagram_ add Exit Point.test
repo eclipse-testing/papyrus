@@ -1,0 +1,97 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,__woOAHvxEeKFfYXYuj08Qw
+Element-Name: StateMachine Diagram: add Exit Point
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _oiHb0Hv4EeKFfYXYuj08Qw
+Save-Time: 2/21/13 2:32 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select Exit Point tool on a palette;
+2. Drag to StateMachine1 and click;
+3. Set ExitPoint name;
+4. Verify that exit point has been succsessfully created.  
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    with [get-diagram -index 1 | get-edit-part -name StateMachine1 | get-edit-part -name StateMachine1] {
+        mouse-move 329 1 -height 379 -width 700
+        get-edit-part -className CustomStateMachineCompartmentEditPart | get-edit-part -name Region1 | get-edit-part 
+            -name Region1 | get-edit-part -name "Final Exams" | mouse-move 33 0 -height 40 -width 95
+    }
+    with [get-palette] {
+        get-palette-entry Join | mouse-move 10 22 -height 23 -width 125
+        get-palette-entry Junction | mouse-move 42 17 -height 23 -width 125
+        get-palette-entry EntryPoint | mouse-move 60 22 -height 23 -width 125
+        get-palette-entry ExitPoint | mouse-move 76 22 -height 23 -width 125
+        get-palette-entry Terminate | mouse-move 90 22 -height 23 -width 125
+        get-palette-entry ConnectionPointReference | mouse-move 102 21 -height 23 -width 125
+        get-palette-entry Comment | mouse-move 114 18 -height 23 -width 125
+        get-palette-entry Constraint | mouse-move 124 17 -height 23 -width 125
+        get-palette-entry State | mouse-move 72 2 -height 23 -width 125
+        get-palette-entry Region | mouse-move 44 1 -height 23 -width 125
+        get-palette-entry State | mouse-move 54 22 -height 23 -width 125
+        get-palette-entry Initial | mouse-move 64 22 -height 23 -width 125
+        get-palette-entry FinalState | mouse-move 65 21 -height 23 -width 125
+        get-palette-entry DeepHistory | mouse-move 67 21 -height 23 -width 125
+        get-palette-entry Join | mouse-move 72 22 -height 23 -width 125
+        with [get-palette-entry ExitPoint] {
+            mouse-move 60 2 button1 -height 23 -width 125
+            mouse-press 60 2 button1 -height 23 -width 125
+            mouse-release 60 2 button1 524288 -height 23 -width 125
+            mouse-move 13 7 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name StateMachine1 | get-edit-part -name StateMachine1 | get-edit-part 
+        -className CustomStateMachineCompartmentEditPart | get-edit-part -name Region1 | get-edit-part -name Region1] {
+        mouse-move 67 336 button1 -height 364 -width 700
+        mouse-press 67 336 button1 -height 364 -width 700
+        mouse-release 67 336 button1 524288 -height 364 -width 700
+    }
+    with [get-diagram -index 1 | get-edit-part -name StateMachine1 | get-edit-part -name StateMachine1] {
+        get-edit-part -name ExitPoint1 | get-edit-part -text ExitPoint1 | activate-direct-edit
+        get-edit-part -className CustomStateMachineCompartmentEditPart | get-edit-part -name Region1 | get-edit-part 
+            -name Region1 | mouse-hover 67 335 -height 364 -width 700
+    }
+    with [get-editbox] {
+        set-text Exit
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        with [get-edit-part -name StateMachine1 | get-edit-part -name StateMachine1 | get-edit-part -name Exit] {
+            mouse-move 9 12 button1 -height 22 -width 22
+            mouse-press 9 12 button1 -height 22 -width 22
+            mouse-move 9 13 -mask 524288 -height 22 -width 22
+            mouse-drag 9 13 -mask 524288 -height 22 -width 22
+        }
+        mouse-drag 35 409 -mask 524288 -height 617 -width 730
+        with [get-edit-part -name StateMachine1] {
+            mouse-drag 176 420 button1 524288 -height 617 -width 730
+            mouse-release 176 420 button1 524288 -height 617 -width 730
+            mouse-move 213 495 button1 -height 617 -width 730
+            mouse-press 213 495 button1 -height 617 -width 730
+            mouse-release 213 495 button1 524288 -height 617 -width 730
+        }
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name StateMachine1 | get-edit-part 
+    -name StateMachine1 | get-edit-part -name Exit] {
+    get-property text | equals Exit | verify-true
+    get-property className 
+        | equals "org.eclipse.papyrus.uml.diagram.statemachine.edit.parts.PseudostateExitPointEditPart" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

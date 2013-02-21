@@ -1,0 +1,63 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_jXptoHvuEeKFfYXYuj08Qw,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Deployment Diagram: Link Comment to Node
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _iyPrwHv0EeKFfYXYuj08Qw
+Save-Time: 2/21/13 2:04 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use Link tool on a palette;
+2. Drag from Comment to Thin Client Node;
+3. Verify that a link has been created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 582 271 -height 617 -width 584
+    with [get-palette | get-palette-entry Link] {
+        mouse-move 50 11 button1 -height 23 -width 125
+        mouse-press 50 11 button1 -height 23 -width 125
+        mouse-release 50 11 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model] {
+            mouse-move 353 169 -height 617 -width 584
+            mouse-move 318 96 -height 617 -width 584
+            with [get-edit-part -className CommentEditPart | get-edit-part -text "Comment..."] {
+                mouse-move 52 36 button1 -height 60 -width 100
+                mouse-press 52 36 button1 -height 60 -width 100
+                mouse-move 38 54 -mask 524288 -height 60 -width 100
+                mouse-drag 38 54 -mask 524288 -height 60 -width 100
+            }
+        }
+        mouse-drag 284 96 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model | get-edit-part -name "Sun Server" | get-edit-part 
+            -className DeviceCompositeCompartmentEditPart] {
+            mouse-drag 119 53 button1 524288 -height 187 -width 241
+            mouse-release 119 53 button1 524288 -height 187 -width 241
+            mouse-press 119 53 button1 -height 187 -width 241
+            mouse-release 119 53 button1 524288 -height 187 -width 241
+        }
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name "Sun Server" 
+    | get-target-connection 0] {
+    get-property className 
+        | equals "org.eclipse.papyrus.uml.diagram.deployment.edit.parts.CommentAnnotatedElementEditPart" | verify-true
+    get-property "source.element.body" | equals "Comment..." | verify-true
+    get-property "target.element.name" | equals "Sun Server" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

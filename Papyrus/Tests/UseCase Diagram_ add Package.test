@@ -1,0 +1,80 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _G3lhoHT3EeKCqKlV8_wmTg,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: UseCase Diagram: add Package
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _MJOlkHv2EeKFfYXYuj08Qw
+Save-Time: 2/21/13 2:15 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select Package tool on a palette;
+2. Click on a diagram;
+3. set Package name;
+4. Verify that new package has been created.  
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 680 192 -height 720 -width 768
+    with [get-palette | get-palette-entry Package] {
+        mouse-move 59 4 button1 -height 23 -width 125
+        mouse-press 59 4 button1 -height 23 -width 125
+        mouse-release 59 4 button1 524288 -height 23 -width 125
+        mouse-move 17 21 -height 23 -width 125
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model] {
+            mouse-move 528 244 -height 720 -width 768
+            mouse-move 136 354 button1 -height 720 -width 768
+            mouse-press 136 354 button1 -height 720 -width 768
+            mouse-move 136 355 -mask 524288 -height 720 -width 768
+            mouse-drag 136 355 -mask 524288 -height 720 -width 768
+        }
+        mouse-drag 142 361 -mask 524288 -height 720 -width 768
+        with [get-edit-part -name Model] {
+            mouse-drag 136 355 button1 524288 -height 720 -width 768
+            mouse-release 136 355 button1 524288 -height 720 -width 768
+        }
+    }
+    with [get-diagram -index 1] {
+        get-edit-part -name Model | get-edit-part -name package | get-edit-part -text package | activate-direct-edit
+        mouse-hover 136 355 -height 720 -width 768
+    }
+    with [get-editbox] {
+        set-text P1
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        mouse-move 144 376 button1 -height 720 -width 768
+        mouse-press 144 376 button1 -height 720 -width 768
+        mouse-drag 145 376 -mask 524288 -height 720 -width 768
+        mouse-drag 151 382 -mask 524288 -height 720 -width 768
+        with [get-edit-part -name Model] {
+            mouse-drag 199 446 button1 524288 -height 720 -width 768
+            mouse-release 199 446 button1 524288 -height 720 -width 768
+            mouse-move 106 334 -height 720 -width 768
+        }
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    get-property childrenCount | equals 16 | verify-true
+    with [get-edit-part -name P1] {
+        get-property text | equals P1 | verify-true
+        get-property className | equals "org.eclipse.papyrus.uml.diagram.usecase.edit.parts.PackageEditPartTN" 
+            | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

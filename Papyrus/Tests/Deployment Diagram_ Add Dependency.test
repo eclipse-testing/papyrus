@@ -1,0 +1,97 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_jXptoHvuEeKFfYXYuj08Qw,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Deployment Diagram: Add Dependency
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _5Rdq0Hv0EeKFfYXYuj08Qw
+Save-Time: 2/21/13 2:06 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use Link tool on a palette;
+2. Drag from Thin Client Node to Sun server device;
+3. Verify that dependency  has been created. 
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 4 65 -height 617 -width 584
+        mouse-move 231 60 -height 617 -width 584
+        mouse-move 561 130 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry Artifact | mouse-move 54 21 -height 23 -width 125
+        get-palette-entry Comment | mouse-move 86 22 -height 23 -width 125
+        get-palette-entry Constraint | mouse-move 107 21 -height 23 -width 125
+        with [get-palette-entry Dependency] {
+            mouse-move 101 13 button1 -height 23 -width 125
+            mouse-press 101 13 button1 -height 23 -width 125
+            mouse-release 101 13 button1 524288 -height 23 -width 125
+            mouse-move 34 0 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model | get-edit-part -name "Thin Client"] {
+            mouse-move 64 69 -height 89 -width 150
+            with [get-edit-part -className NodeCompositeCompartmentEditPart] {
+                mouse-move 68 23 button1 -height 59 -width 150
+                mouse-press 68 23 button1 -height 59 -width 150
+                mouse-move 69 23 -mask 524288 -height 59 -width 150
+                mouse-drag 69 23 -mask 524288 -height 59 -width 150
+            }
+        }
+        mouse-drag 123 100 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model | get-edit-part -name "Sun Server" | get-edit-part 
+            -className DeviceCompositeCompartmentEditPart] {
+            mouse-drag 100 24 button1 524288 -height 187 -width 241
+            mouse-release 100 24 button1 524288 -height 187 -width 241
+            mouse-press 100 24 button1 -height 187 -width 241
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model | get-edit-part -name "Sun Server" | get-edit-part 
+            -className DeviceCompositeCompartmentEditPart] {
+            mouse-move 100 25 -mask 524288 -height 187 -width 241
+            mouse-drag 100 25 -mask 524288 -height 187 -width 241
+        }
+        mouse-drag 130 354 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model] {
+            with [get-edit-part -name "Sun Server"] {
+                mouse-drag 100 60 button1 524288 -height 217 -width 241
+                mouse-release 100 60 button1 524288 -height 217 -width 241
+                get-target-connection 0 | get-edit-part -text Dependency1 | activate-direct-edit
+            }
+            mouse-move 109 203 -height 617 -width 584
+        }
+    }
+    with [get-editbox] {
+        set-text "Dep-cy"
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        get-edit-part -name Model | mouse-move 7 213 -height 617 -width 584
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name "Sun Server" 
+    | get-target-connection 0] {
+    get-property text | equals "Dep-cy" | verify-true
+    get-property className | equals "org.eclipse.papyrus.uml.diagram.deployment.edit.parts.DependencyEditPart" 
+        | verify-true
+    get-property "source.element.name" | equals "Thin Client" | verify-true
+    get-property "target.element.name" | equals "Sun Server" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

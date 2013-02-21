@@ -1,0 +1,99 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_jXptoHvuEeKFfYXYuj08Qw,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Deployment Diagram: add Deployment
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _leSl0Hv1EeKFfYXYuj08Qw
+Save-Time: 2/21/13 2:10 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use Deployment tool on a palette;
+2. Drag from Thin Client Node to Sun server device;
+3. Verify that deployment  has been created. 
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 42 102 -height 617 -width 584
+        mouse-move 345 106 -height 617 -width 584
+        mouse-move 583 160 -height 617 -width 584
+    }
+    with [get-palette] {
+        get-palette-entry Artifact | mouse-move 14 18 -height 23 -width 125
+        get-palette-entry Manifestation | mouse-move 38 1 -height 23 -width 125
+        with [get-palette-entry Deployment] {
+            mouse-move 56 0 -height 23 -width 125
+            mouse-move 46 2 button1 -height 23 -width 125
+            mouse-press 46 2 button1 -height 23 -width 125
+            mouse-release 46 2 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model | get-edit-part -name "Thin Client"] {
+            with [get-edit-part -className NodeCompositeCompartmentEditPart] {
+                mouse-move 96 33 button1 -height 59 -width 150
+                mouse-press 96 33 button1 -height 59 -width 150
+            }
+            mouse-move 96 69 -mask 524288 -height 89 -width 150
+            mouse-drag 96 69 -mask 524288 -height 89 -width 150
+        }
+        mouse-drag 150 111 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model | get-edit-part -name "Sun Server" | get-edit-part 
+            -className DeviceCompositeCompartmentEditPart] {
+            mouse-drag 115 34 button1 524288 -height 187 -width 241
+            mouse-release 115 34 button1 524288 -height 187 -width 241
+            mouse-press 115 34 button1 -height 187 -width 241
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Model | get-edit-part -name "Sun Server" | get-edit-part 
+            -className DeviceCompositeCompartmentEditPart] {
+            mouse-move 116 34 -mask 524288 -height 187 -width 241
+            mouse-drag 116 34 -mask 524288 -height 187 -width 241
+        }
+        mouse-drag 146 363 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model] {
+            with [get-edit-part -name "Sun Server"] {
+                mouse-drag 116 69 button1 524288 -height 217 -width 241
+                mouse-release 116 69 button1 524288 -height 217 -width 241
+                get-edit-part -className DeviceCompositeCompartmentEditPart | mouse-move 115 34 -height 187 -width 241
+                get-target-connection 0 | get-edit-part -text Deployment1 | activate-direct-edit
+            }
+            mouse-move 0 354 -height 617 -width 584
+        }
+    }
+    with [get-editbox] {
+        set-text D1
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        with [get-edit-part -name Model] {
+            mouse-move 22 311 -height 617 -width 584
+            mouse-move 7 180 -height 617 -width 584
+        }
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model | get-edit-part -name "Sun Server" 
+    | get-target-connection 0] {
+    get-property text | equals "D1«deployment»" | verify-true
+    get-property className | equals "org.eclipse.papyrus.uml.diagram.deployment.edit.parts.DeploymentEditPart" 
+        | verify-true
+    get-property "source.element.name" | equals "Thin Client" | verify-true
+    get-property "target.element.name" | equals "Sun Server" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

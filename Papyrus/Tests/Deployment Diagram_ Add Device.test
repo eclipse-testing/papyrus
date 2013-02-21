@@ -1,0 +1,91 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_jXptoHvuEeKFfYXYuj08Qw,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Deployment Diagram: Add Device
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _cmNcwHvzEeKFfYXYuj08Qw
+Save-Time: 2/21/13 2:04 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Use Device tool on a palette;
+2. Drag to a diagram and click;
+3. Set device name;
+4. Verify that device was successfully created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name Model | mouse-move 573 78 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry Node | mouse-move 18 16 -height 23 -width 125
+        get-palette-entry Device | mouse-move 100 18 -height 23 -width 125
+        get-palette-entry "Execution Environment" | mouse-move 118 3 -height 37 -width 125
+        with [get-palette-entry Dependency] {
+            mouse-move 92 22 -height 23 -width 125
+            mouse-move 77 2 -height 23 -width 125
+        }
+        get-palette-entry Link | mouse-move 87 0 -height 23 -width 125
+        get-palette-entry Constraint | mouse-move 97 1 -height 23 -width 125
+        get-palette-entry Comment | mouse-move 97 1 -height 23 -width 125
+        with [get-palette-entry Device] {
+            mouse-move 73 11 button1 -height 23 -width 125
+            mouse-press 73 11 button1 -height 23 -width 125
+            mouse-release 73 11 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 409 303 button1 -height 617 -width 584
+        mouse-press 409 303 button1 -height 617 -width 584
+        mouse-release 409 303 button1 524288 -height 617 -width 584
+    }
+    with [get-diagram -index 1 | get-edit-part -name Model] {
+        mouse-move 408 303 -height 617 -width 584
+        with [get-edit-part -name Device1] {
+            get-handle ResizeHandle -index 6 | mouse-hover 3 4 -height 7 -width 7
+            get-edit-part -text Device1 | activate-direct-edit
+            mouse-move 54 15 -height 100 -width 150
+            mouse-hover 54 15 -height 100 -width 150
+        }
+    }
+    with [get-editbox] {
+        set-text "sun Server"
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        with [get-edit-part -name Model | get-edit-part -name "sun Server"] {
+            mouse-move 39 13 button1 -height 100 -width 150
+            mouse-press 39 13 button1 -height 100 -width 150
+            mouse-move 38 13 -mask 524288 -height 100 -width 150
+            mouse-drag 38 13 -mask 524288 -height 100 -width 150
+        }
+        mouse-drag 453 322 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name Model] {
+            with [get-edit-part -name "sun Server" | get-handle MoveHandle] {
+                mouse-drag 1 9 button1 524288 -height 102 -width 152
+                mouse-release 1 9 button1 524288 -height 102 -width 152
+            }
+            mouse-move 411 213 button1 -height 617 -width 584
+            mouse-press 411 213 button1 -height 617 -width 584
+        }
+        get-figure "1/10" | mouse-release 17 30 button1 524288 -height 40 -width 190
+        get-edit-part -name Model | mouse-move 10 233 -height 617 -width 584
+    }
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Model] {
+    get-property childrenCount | equals 6 | verify-true
+    get-edit-part -name "sun Server" | get-figure 0 | get-property text | equals "«device»sun Server" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

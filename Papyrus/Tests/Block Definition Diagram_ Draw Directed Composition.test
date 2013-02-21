@@ -1,0 +1,78 @@
+--- Q7 testcase ---
+Format-Version: 1.0
+Q7-vendor: www.xored.com/q7
+Contexts: _L1lMoHv9EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
+Element-Name: Block Definition Diagram: Draw Directed Composition
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: __lcl0Hv-EeKFfYXYuj08Qw
+Save-Time: 2/21/13 3:19 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+TEST STEPS
+
+1. Select DirectedComposition tool on a palette;
+2. Draw from Mainsystem block to SubSystem2 block;
+3. Set name as s2 and press Return key;
+4. Verify that DirectedComposition was successfully created. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
+with [get-editor "model.di"] {
+    get-diagram -index 1 | get-edit-part -name SysMLmodel | mouse-move 583 101 -height 617 -width 584
+    with [get-palette] {
+        get-palette-entry Composition | mouse-move 23 22 -height 23 -width 125
+        with [get-palette-entry DirectedComposition] {
+            mouse-move 37 7 button1 -height 23 -width 125
+            mouse-press 37 7 button1 -height 23 -width 125
+            mouse-release 37 7 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1] {
+        with [get-edit-part -name SysMLmodel] {
+            mouse-move 461 155 -height 617 -width 584
+            with [get-edit-part -name MainSystem] {
+                mouse-move 93 132 button1 -height 150 -width 100
+                mouse-press 93 132 button1 -height 150 -width 100
+                mouse-move 94 132 -mask 524288 -height 150 -width 100
+                mouse-drag 94 132 -mask 524288 -height 150 -width 100
+            }
+        }
+        mouse-drag 244 198 -mask 524288 -height 617 -width 584
+        with [get-edit-part -name SysMLmodel | get-edit-part -name SubSystem2] {
+            mouse-drag 8 29 button1 524288 -height 150 -width 100
+            mouse-release 8 29 button1 524288 -height 150 -width 100
+            mouse-press 8 29 button1 -height 150 -width 100
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name SysMLmodel] {
+        get-edit-part -name SubSystem2 | mouse-release 8 29 button1 524288 -height 150 -width 100
+        mouse-move 368 307 -height 617 -width 584
+        get-edit-part -name SubSystem2 | get-target-connection 0 | get-edit-part -text subsystem2 | mouse-hover 35 12 
+            -height 15 -width 63
+        mouse-move 366 491 -height 617 -width 584
+        get-edit-part -className CommentEditPart | get-edit-part 
+            -text "Why can\'t I connect two ports together on ths BDD?" | mouse-move 270 10 -height 49 -width 273
+    }
+}
+with [get-view Properties | get-group "Member End" | get-editbox -after [get-label Name]] {
+    set-text s2
+    key-type Enter
+}
+with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name SysMLmodel | get-edit-part -name SubSystem2 
+    | get-target-connection 0] {
+    get-property text | equals Association4s2 | verify-true
+    get-property className | equals "org.eclipse.papyrus.sysml.diagram.common.edit.part.AssociationEditPart" 
+        | verify-true
+    get-property "source.element.name" | equals MainSystem | verify-true
+    get-property "target.element.name" | equals SubSystem2 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
