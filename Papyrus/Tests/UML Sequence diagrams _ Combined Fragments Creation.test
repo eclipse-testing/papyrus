@@ -7,7 +7,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: http://jira4.xored.com/browse/QS-2436
 Id: _9mX24HWkEeKzYsT5EMG8Hw
-Save-Time: 2/21/13 4:04 PM
+Save-Time: 2/25/13 3:31 PM
 Tags: Sequence Diagram
 Testcase-Type: ecl
 
@@ -149,5 +149,5 @@ get-view "Model Explorer" | get-tree
 get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Interaction1 | get-edit-part -name Interaction1 
     | get-edit-part -className InteractionInteractionCompartmentEditPart | get-edit-part -name CombinedFragment 
     | get-edit-part -name CombinedFragment | get-edit-part -name InteractionOperand | get-figure "0/0/0" 
-    | get-property text | equals "[2,10]" | verify-true
+    | get-property text | equals "(2, 10)" | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

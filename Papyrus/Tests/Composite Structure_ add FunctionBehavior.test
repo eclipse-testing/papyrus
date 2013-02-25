@@ -2,12 +2,12 @@
 Format-Version: 1.0
 Q7-vendor: www.xored.com/q7
 Contexts: _Q6KoQHs2EeKFfYXYuj08Qw,_RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg
-Element-Name: Composite Structure: add FunstionBehavior
+Element-Name: Composite Structure: add FunctionBehavior
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _vsH4kHtBEeKFfYXYuj08Qw
-Save-Time: 2/21/13 3:57 PM
+Save-Time: 2/25/13 2:43 PM
 Tags: Composite Structure Diagram
 Testcase-Type: ecl
 

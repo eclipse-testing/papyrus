@@ -1,13 +1,13 @@
 --- Q7 testcase ---
 Format-Version: 1.0
 Q7-vendor: www.xored.com/q7
-Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_dBL1oHmPEeK_kuNbk7Y5fw
+Contexts: _RVOxwHTiEeKCqKlV8_wmTg,_NOj3UXTiEeKCqKlV8_wmTg,_-RU00X8aEeKm7Y6j540UUg
 Element-Name: Activity Diagram: Create Fork Node
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _-arZwXpnEeKeS_winlSmvQ
-Save-Time: 2/21/13 3:53 PM
+Save-Time: 2/25/13 2:19 PM
 Tags: Activity Diagram
 Testcase-Type: ecl
 
@@ -26,154 +26,169 @@ Entry-Name: .content
 
 get-view "Project Explorer" | get-tree | select "MyProject/model" | double-click
 with [get-editor "model.di"] {
-    get-diagram -index 1 | get-edit-part -name Activity1 | get-edit-part -name Activity1 | get-edit-part 
-        -className CustomActivityActivityContentCompartmentEditPart | mouse-move 135 610 -height 736 -width 857
     get-tab-folder | get-tab-item ActivityDiagram3 | click
-    get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
-        -className CustomActivityActivityContentCompartmentEditPart | mouse-move 621 237 -height 736 -width 857
-    with [get-palette | get-palette-entry "Fork node"] {
-        mouse-move 42 9 button1 -height 23 -width 125
-        mouse-press 42 9 button1 -height 23 -width 125
-        mouse-release 42 9 button1 524288 -height 23 -width 125
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        mouse-move 485 292 -height 736 -width 857
+        mouse-move 633 125 -height 736 -width 857
+    }
+    with [get-palette] {
+        with [get-palette-entry ControlNodes] {
+            mouse-move 8 12 button1 -height 23 -width 125
+            mouse-press 8 12 button1 -height 23 -width 125
+        }
+        get-figure "0/1/1/0/0/1/0/1" | mouse-press 3 11 button1 -height 20 -width 9
+        get-palette-entry ControlNodes | mouse-release 8 12 button1 524288 -height 23 -width 125
+        get-figure "0/1/1/0/0/1/0/1" | mouse-release 3 11 button1 524288 -height 20 -width 9
+        get-palette-entry ControlNodes | mouse-hover 8 12 -height 163 -width 125
+        get-palette-entry "Initial node" | mouse-move 15 21 -height 23 -width 107
+        get-palette-entry "Activity final" | mouse-move 23 18 -height 23 -width 125
+        get-palette-entry "Flow final" | mouse-move 33 18 -height 23 -width 125
+        get-palette-entry "Decision node" | mouse-move 38 17 -height 23 -width 125
+        get-palette-entry "Merge node" | mouse-move 44 22 -height 23 -width 125
+        get-palette-entry "Join node" | mouse-move 46 21 -height 23 -width 125
+        with [get-palette-entry "Fork node"] {
+            mouse-move 46 7 button1 -height 23 -width 125
+            mouse-press 46 7 button1 -height 23 -width 125
+            mouse-release 46 7 button1 524288 -height 23 -width 125
+        }
     }
     with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
         -className CustomActivityActivityContentCompartmentEditPart] {
-        mouse-move 329 258 button1 -height 736 -width 857
-        mouse-press 329 258 button1 -height 736 -width 857
-        mouse-release 329 258 button1 524288 -height 736 -width 857
+        mouse-move 289 239 button1 -height 736 -width 857
+        mouse-press 289 239 button1 -height 736 -width 857
+        mouse-release 289 239 button1 524288 -height 736 -width 857
     }
     with [get-diagram -index 1] {
-        mouse-hover 329 279 -height 757 -width 857
+        mouse-hover 289 282 -height 779 -width 857
         get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
-            -className CustomActivityActivityContentCompartmentEditPart | mouse-move 617 387 -height 736 -width 857
+            -className CustomActivityActivityContentCompartmentEditPart | mouse-move 605 480 -height 736 -width 857
     }
     with [get-palette] {
-        get-palette-entry "Call Operation Action" | mouse-move 10 34 -height 37 -width 125
-        get-palette-entry "Send Object Action" | mouse-move 47 32 -height 37 -width 125
-        get-palette-entry "Send Signal Action" | mouse-move 83 35 -height 37 -width 125
-        get-palette-entry "Accept Event Action" | mouse-move 117 35 -height 37 -width 125
-        get-palette-entry "Value Specification Action" | mouse-move 119 0 -height 52 -width 125
-        get-palette-entry "Exception Handler" | mouse-move 112 0 -height 37 -width 125
-        get-palette-entry "Object Flow" | mouse-move 70 0 -height 23 -width 125
+        with [get-palette-entry Nodes] {
+            mouse-move 78 479 button1 -height 481 -width 125
+            mouse-press 78 479 button1 -height 481 -width 125
+        }
+        get-figure "0/1/1/0/0" | mouse-press 78 519 button1 -height 521 -width 125
+        get-palette-entry Nodes | mouse-release 78 479 button1 524288 -height 481 -width 125
+        get-figure "0/1/1/0/0" | mouse-release 78 519 button1 524288 -height 521 -width 125
+        with [get-palette-entry Edges] {
+            mouse-move 78 7 button1 -height 22 -width 125
+            mouse-press 78 7 button1 -height 22 -width 125
+        }
+        get-figure "0/2/0/0/1" | mouse-press 76 3 button1 -height 16 -width 121
+        get-palette-entry Edges | mouse-release 78 7 button1 524288 -height 22 -width 125
+        get-figure "0/2/0/0/1" | mouse-release 76 3 button1 524288 -height 16 -width 121
+        get-palette-entry Edges | mouse-hover 78 466 -height 481 -width 125
+        get-palette-entry Link | mouse-move 71 8 -height 23 -width 125
+        get-palette-entry "Object Flow" | mouse-move 74 13 -height 23 -width 125
+        get-palette-entry "Exception Handler" | mouse-move 91 1 -height 37 -width 125
         with [get-palette-entry "Control Flow"] {
-            mouse-move 69 19 -height 23 -width 125
-            mouse-hover 69 19 -height 23 -width 125
-            mouse-move 69 19 button1 -height 23 -width 125
-            mouse-press 69 19 button1 -height 23 -width 125
-            mouse-release 69 19 button1 524288 -height 23 -width 125
+            mouse-move 76 6 button1 -height 23 -width 125
+            mouse-press 76 6 button1 -height 23 -width 125
+            mouse-release 76 6 button1 524288 -height 23 -width 125
         }
     }
     with [get-diagram -index 1] {
         with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
             -className CustomActivityActivityContentCompartmentEditPart] {
-            mouse-move 205 305 -height 736 -width 857
-            with [get-edit-part -name OpaqueAction1 | get-edit-part -name OpaqueAction1] {
-                mouse-move 60 15 -height 38 -width 84
-                mouse-hover 60 15 -height 38 -width 84
-                mouse-move 60 15 button1 -height 38 -width 84
-                mouse-press 60 15 button1 -height 38 -width 84
-                mouse-move 61 15 -mask 524288 -height 38 -width 84
-                mouse-drag 61 15 -mask 524288 -height 38 -width 84
+            mouse-move 517 244 -height 736 -width 857
+            with [get-edit-part -name OpaqueAction3 | get-edit-part -name OpaqueAction3] {
+                mouse-move 4 21 button1 -height 38 -width 84
+                mouse-press 4 21 button1 -height 38 -width 84
+                mouse-move 2 21 -mask 524288 -height 38 -width 84
+                mouse-drag 2 21 -mask 524288 -height 38 -width 84
             }
         }
-        mouse-drag 187 309 -mask 524288 -height 757 -width 857
+        mouse-drag 475 296 -mask 524288 -height 757 -width 857
         with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
             -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name ForkNode1] {
-            mouse-drag 3 20 button1 524288 -height 40 -width 10
-            mouse-release 3 20 button1 524288 -height 40 -width 10
-            mouse-press 3 20 button1 -height 40 -width 10
+            mouse-drag 4 22 button1 524288 -height 40 -width 10
+            mouse-release 4 22 button1 524288 -height 40 -width 10
+            mouse-press 4 22 button1 -height 40 -width 10
         }
+    }
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        get-edit-part -name ForkNode1 | mouse-release 4 22 button1 524288 -height 40 -width 10
+        mouse-move 626 130 -height 736 -width 857
+    }
+    with [get-palette | get-palette-entry "Control Flow"] {
+        mouse-move 53 9 button1 -height 23 -width 125
+        mouse-press 53 9 button1 -height 23 -width 125
+        mouse-release 53 9 button1 524288 -height 23 -width 125
     }
     with [get-diagram -index 1] {
         with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
             -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name ForkNode1] {
-            mouse-release 3 20 button1 524288 -height 40 -width 10
             get-target-connection 0 | get-edit-part -className ControlFlowNameEditPart | activate-direct-edit
+            mouse-move 3 24 button1 -height 40 -width 10
+            mouse-press 3 24 button1 -height 40 -width 10
         }
-        mouse-hover 332 299 -height 757 -width 857
-        get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
-            -className CustomActivityActivityContentCompartmentEditPart | mouse-move 601 414 -height 736 -width 857
-    }
-    with [get-palette] {
-        get-palette-entry "Send Signal Action" | mouse-move 9 27 -height 37 -width 125
-        get-palette-entry "Accept Event Action" | mouse-move 31 31 -height 37 -width 125
-        with [get-palette-entry "Control Flow"] {
-            mouse-move 68 22 -height 23 -width 125
-            mouse-move 71 16 -height 23 -width 125
+        commit-direct-edit
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name ForkNode1] {
+            mouse-move 2 23 -mask 524288 -height 40 -width 10
+            mouse-drag 2 23 -mask 524288 -height 40 -width 10
+        }
+        mouse-drag 297 289 -mask 524288 -height 757 -width 857
+        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name OpaqueAction1 
+            | get-edit-part -name OpaqueAction1] {
+            mouse-drag 68 23 button1 524288 -height 38 -width 84
+            mouse-release 68 23 button1 524288 -height 38 -width 84
+            mouse-press 68 23 button1 -height 38 -width 84
         }
     }
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        get-edit-part -name OpaqueAction1 | get-edit-part -name OpaqueAction1 | mouse-release 68 23 button1 524288 
+            -height 38 -width 84
+        mouse-move 631 139 -height 736 -width 857
+        get-edit-part -name OpaqueAction1 | get-target-connection 0 | get-edit-part -className ControlFlowNameEditPart 
+            | activate-direct-edit
+    }
+    get-palette | get-palette-entry "Exception Handler" | mouse-move 45 0 -height 37 -width 125
+    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
+        -className CustomActivityActivityContentCompartmentEditPart] {
+        with [get-edit-part -name ForkNode1] {
+            mouse-move 5 21 -height 40 -width 10
+            mouse-hover 5 21 -height 40 -width 10
+        }
+        mouse-move 621 183 -height 736 -width 857
+    }
+    get-palette | get-palette-entry "Control Flow" | mouse-move 75 18 -height 23 -width 125
     get-diagram -index 1 | commit-direct-edit
     with [get-palette | get-palette-entry "Control Flow"] {
-        mouse-move 71 16 button1 -height 23 -width 125
-        mouse-press 71 16 button1 -height 23 -width 125
-        mouse-release 71 16 button1 524288 -height 23 -width 125
+        mouse-move 75 18 button1 -height 23 -width 125
+        mouse-press 75 18 button1 -height 23 -width 125
+        mouse-release 75 18 button1 524288 -height 23 -width 125
     }
     with [get-diagram -index 1] {
         with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
             -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name ForkNode1] {
-            mouse-move 5 11 -height 40 -width 10
-            mouse-hover 5 11 -height 40 -width 10
-            mouse-move 5 11 button1 -height 40 -width 10
-            mouse-press 5 11 button1 -height 40 -width 10
-            mouse-move 5 12 -mask 524288 -height 40 -width 10
-            mouse-drag 5 12 -mask 524288 -height 40 -width 10
+            mouse-move 4 23 button1 -height 40 -width 10
+            mouse-press 4 23 button1 -height 40 -width 10
+            mouse-move 4 24 -mask 524288 -height 40 -width 10
+            mouse-drag 4 24 -mask 524288 -height 40 -width 10
         }
-        mouse-drag 340 297 -mask 524288 -height 757 -width 857
+        mouse-drag 299 290 -mask 524288 -height 757 -width 857
         with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
             -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name OpaqueAction2 
             | get-edit-part -name OpaqueAction2] {
-            mouse-drag 26 16 button1 524288 -height 38 -width 84
-            mouse-release 26 16 button1 524288 -height 38 -width 84
-            mouse-press 26 16 button1 -height 38 -width 84
-        }
-    }
-    with [get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
-        -className CustomActivityActivityContentCompartmentEditPart] {
-        with [get-edit-part -name OpaqueAction2] {
-            get-edit-part -name OpaqueAction2 | mouse-release 26 16 button1 524288 -height 38 -width 84
-            get-target-connection 0 | get-edit-part -className ControlFlowNameEditPart | activate-direct-edit
-        }
-        mouse-move 624 460 -height 736 -width 857
-    }
-    get-palette | get-palette-entry "Control Flow" | mouse-move 46 12 -height 23 -width 125
-    get-diagram -index 1 | commit-direct-edit
-    with [get-palette] {
-        with [get-palette-entry "Control Flow"] {
-            mouse-move 46 12 button1 -height 23 -width 125
-            mouse-press 46 12 button1 -height 23 -width 125
-            mouse-release 46 12 button1 524288 -height 23 -width 125
-            mouse-move 39 1 -height 23 -width 125
-        }
-        get-palette-entry "Value Specification Action" | mouse-move 19 0 -height 52 -width 125
-    }
-    with [get-diagram -index 1] {
-        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
-            -className CustomActivityActivityContentCompartmentEditPart] {
-            mouse-move 551 436 -height 736 -width 857
-            with [get-edit-part -name ForkNode1] {
-                mouse-move 6 25 button1 -height 40 -width 10
-                mouse-press 6 25 button1 -height 40 -width 10
-                mouse-move 7 25 -mask 524288 -height 40 -width 10
-                mouse-drag 7 25 -mask 524288 -height 40 -width 10
-            }
-        }
-        mouse-drag 342 310 -mask 524288 -height 757 -width 857
-        with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
-            -className CustomActivityActivityContentCompartmentEditPart | get-edit-part -name OpaqueAction3 
-            | get-edit-part -name OpaqueAction3] {
-            mouse-drag 48 23 button1 524288 -height 38 -width 84
-            mouse-release 48 23 button1 524288 -height 38 -width 84
-            mouse-press 48 23 button1 -height 38 -width 84
+            mouse-drag 44 11 button1 524288 -height 38 -width 84
+            mouse-release 44 11 button1 524288 -height 38 -width 84
+            mouse-press 44 11 button1 -height 38 -width 84
         }
     }
     with [get-diagram -index 1] {
         with [get-edit-part -name Activity4 | get-edit-part -name Activity4 | get-edit-part 
             -className CustomActivityActivityContentCompartmentEditPart] {
-            with [get-edit-part -name OpaqueAction3] {
-                get-edit-part -name OpaqueAction3 | mouse-release 48 23 button1 524288 -height 38 -width 84
-                get-target-connection 0 | get-edit-part -className ControlFlowNameEditPart | activate-direct-edit
-            }
-            mouse-move 63 354 -height 736 -width 857
+            get-edit-part -name OpaqueAction2 | get-edit-part -name OpaqueAction2 | mouse-release 44 11 button1 524288 
+                -height 38 -width 84
+            mouse-move 106 292 -height 736 -width 857
+            get-edit-part -name OpaqueAction2 | get-target-connection 0 | get-edit-part 
+                -className ControlFlowNameEditPart | activate-direct-edit
         }
         commit-direct-edit
     }
@@ -181,19 +196,19 @@ with [get-editor "model.di"] {
 with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name Activity4 | get-edit-part -name Activity4 
     | get-edit-part -className CustomActivityActivityContentCompartmentEditPart] {
     with [get-edit-part -name ForkNode1 | get-target-connection 0] {
-        get-property "element.name" | equals ControlFlow1 | verify-true
-        get-property "element.source.name" | equals OpaqueAction1 | verify-true
-        get-property "element.target.name" | equals ForkNode1 | verify-true
+        get-property text | equals "[true]" | verify-true
+        get-property className | equals "org.eclipse.papyrus.uml.diagram.activity.edit.part.CustomControlFlowEditPart" 
+            | verify-true
+    }
+    with [get-edit-part -name OpaqueAction1 | get-target-connection 0] {
+        get-property text | equals "[true]" | verify-true
+        get-property className | equals "org.eclipse.papyrus.uml.diagram.activity.edit.part.CustomControlFlowEditPart" 
+            | verify-true
     }
     with [get-edit-part -name OpaqueAction2 | get-target-connection 0] {
-        get-property "element.name" | equals ControlFlow2 | verify-true
-        get-property "element.source.name" | equals ForkNode1 | verify-true
-        get-property "element.target.name" | equals OpaqueAction2 | verify-true
-    }
-    with [get-edit-part -name OpaqueAction3 | get-target-connection 0] {
-        get-property "element.name" | equals ControlFlow3 | verify-true
-        get-property "source.element.name" | equals ForkNode1 | verify-true
-        get-property "target.element.name" | equals OpaqueAction3 | verify-true
+        get-property text | equals "[true]" | verify-true
+        get-property className | equals "org.eclipse.papyrus.uml.diagram.activity.edit.part.CustomControlFlowEditPart" 
+            | verify-true
     }
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

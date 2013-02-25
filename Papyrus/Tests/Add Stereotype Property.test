@@ -7,7 +7,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _BsSvIHXAEeK2XrLEzOSSCQ
-Save-Time: 2/21/13 3:55 PM
+Save-Time: 2/25/13 2:34 PM
 Tags: Profile Diagram
 Testcase-Type: ecl
 
@@ -71,10 +71,9 @@ with [get-window Type] {
     get-tree | select " profile/ SimplifiedReqML/ MyType"
     get-button OK | click
 }
-get-editor "model.profile.di" | get-diagram -index 1 | get-edit-part -name profile | mouse-move 8 458 -height 617 
-    -width 584
+
 get-editor "model.profile.di" | get-diagram -index 1 | get-edit-part -name profile | get-edit-part 
     -name SimplifiedReqML | get-edit-part -className ProfilePackageableElementCompartmentEditPartTN | get-edit-part 
-    -name Refinement | get-edit-part -text "+ P1: MyType" | get-edit-part -name P1 | get-property text 
-    | equals "+ P1: MyType" | verify-true
+    -name Refinement | get-edit-part -text "+ P1: MyType [1]" | get-property text | equals "+ P1: MyType [1]" 
+    | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

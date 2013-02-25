@@ -7,7 +7,7 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _JoApUHpyEeKeS_winlSmvQ
-Save-Time: 2/21/13 4:04 PM
+Save-Time: 2/25/13 3:18 PM
 Tags: Class Diagram
 Testcase-Type: ecl
 
@@ -124,23 +124,15 @@ with [get-view "Model Explorer" | get-tree] {
 }
 with [get-editor "model.di" | get-diagram -index 1] {
     with [get-edit-part -name System | get-edit-part -name Car] {
-        with [get-edit-part -text "+ property1: <Undefined>"] {
-            mouse-move 66 12 -height 28 -width 100
-           
-        }
+       
         with [get-edit-part -className ClassOperationCompartmentEditPart] {
             mouse-release 76 0 button1 524288 -height 25 -width 153
             mouse-hover 76 0 -height 25 -width 153
         }
-        with [get-edit-part -text "+ property1: <Undefined>" | get-edit-part -name property1] {
-            mouse-move 97 6 button1 -height 15 -width 143
-            mouse-press 97 6 button1 -height 15 -width 143
-            mouse-move 98 6 -mask 524288 -height 15 -width 143
-            mouse-drag 98 6 -mask 524288 -height 15 -width 143
-        }
+        
     }
-    mouse-drag 406 206 -mask 524288 -height 617 -width 640
-    with [get-edit-part -name System | get-edit-part -name Car | get-edit-part -text "+ property1: <Undefined>"] {
+   
+    with [get-edit-part -name System | get-edit-part -name Car | get-edit-part -text "+ property1: <Undefined> [1]"] {
         mouse-drag 103 8 button1 524288 -height 33 -width 153
         mouse-release 103 8 button1 524288 -height 33 -width 153
         with [get-edit-part -name property1] {
@@ -164,7 +156,7 @@ with [get-editor "model.di" | get-diagram -index 1 | get-edit-part -name System]
     get-property childrenCount | equals 1 | verify-true
     with [get-edit-part -name Car] {
         get-edit-part -text Car | get-property text | equals Car | verify-true
-        get-edit-part -text "+ property1: Speed" | get-figure "1/0/0" | get-property text | equals "+ property1: Speed" 
+        get-edit-part -text "+ property1: Speed [1]" | get-figure "1/0/0" | get-property text | equals "+ property1: Speed [1]" 
             | verify-true
     }
 }
